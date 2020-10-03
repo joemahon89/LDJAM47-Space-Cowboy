@@ -79,7 +79,7 @@ func wait_before_move_again(wait_time):
 	if wait_time > 0:
 		wait_timer.set_wait_time(wait_time)
 		wait_timer.connect("timeout", self, "_wait_timer_timeout")
-		print("timer started")
+		#print("timer started")
 		add_child(wait_timer)
 		wait_timer.start()
 	# If wait time is zero, get a new target immediately
@@ -129,7 +129,7 @@ func _process(delta):
 				captured = false
 				conveyoring = true
 				target = cmp01.position
-				main_node.lasso_node.reset_lasso()
+				main_node.lasso_node.reset_pressed = true
 				#handle_conveyorbelts()
 				
 	# Follow random points
@@ -168,6 +168,8 @@ func _process(delta):
 		if target == cmp03.position:
 			if neck_pos.distance_to(cmp03.position) < 10:
 				global.add_points(creature_data[creature_type]["capture_points"])
+				#lasso_node
+				self.queue_free()
 			else:
 				velocity = move_and_slide(velocity)
 				

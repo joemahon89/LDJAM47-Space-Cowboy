@@ -26,40 +26,98 @@ onready var animation_easy = get_node("animationplayer_easy")
 
 
 var input_allowed = true
-var start_delay_timer
-var start_delay = 2
+var start_delay_timer = Timer.new()
+var start_delay = 1
+var reset_pressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_lasso_scale(Vector2(0.5, 0.5))
+	
+	start_delay_timer.set_one_shot(true)
+	start_delay_timer.set_wait_time(start_delay)
+	start_delay_timer.connect("timeout", self, "_on_start_delay_timer_timeout")
+	add_child(start_delay_timer)
+	start_delay_timer.start()
+	input_allowed = false
 	pass
 
 
-func reset_lasso():
-	self.linear_velocity = Vector2(0,0)
-	self.position = Vector2(320,330)
-	
-	input_allowed = false
-	set_lasso_scale(Vector2(0.5, 0.5))
-	#initial_impulse()
-	print("resetting")
-	#input_allowed = true
-
-	start_delay_timer = Timer.new()
-	start_delay_timer.set_wait_time(start_delay)
-	start_delay_timer.connect("timeout", self, "_on_start_delay_timer_timeout")
-	print("timer started")
-	add_child(start_delay_timer)
+func pre_reset_lasso():
+	#if reset_pressed == true:
+	#animation_easy.seek(0.0,true)
+	animation_easy.stop(true)
+		
+	#start_delay_timer.stop()
+	#set_applied_force(Vector2(0,0))
+	#linear_velocity = Vector2(0,0)
+	#applied_force = Vector2(0,0)
+		
+	#xform.origin.x = 320
+	#xform.origin.y = 330
+		
+	reset_pressed = false
+	#reset_lasso()
 	start_delay_timer.start()
+
+
+func reset_lasso():
+	set_mode(3)
+	#animation_easy.clear_caches()
+	#animation_easy.stop()
+	#print("PLAYING")
+	#print(animation_easy.is_playing())
+	#print("YAY OR NAY")
+	position = Vector2(320,330)
+	set_lasso_scale(Vector2(0.5, 0.5))
+	set_mode(0)
+	initial_impulse()
+
+#	print("timer started")
+	#start_delay_timer.stop()
+	#start_delay_timer = Timer.new()
+	
+	#print("pos",position)
+	
+	position = Vector2(320,330)
+	#input_allowed = false
+	#set_lasso_scale(Vector2(0.5, 0.5))
+	#initial_impulse()
+	#print("resetting")
+	#input_allowed = true
+	#start_delay_timer.set_wait_time(start_delay)
+	#start_delay_timer.connect("timeout", self, "_on_start_delay_timer_timeout")
+	#start_delay_timer.start()
 	
 func _on_start_delay_timer_timeout():
 	start_delay_timer.stop()
-	initial_impulse()
 	input_allowed = true
+	reset_lasso()
+	animation_easy.play("lasso_scale_anim")
+	
 
 
-
-
+func _integrate_forces(state):
+	
+	if reset_pressed == true:
+		input_allowed = false
+		print(reset_pressed)
+		animation_easy.seek(0.0,true)
+		animation_easy.stop(true)
+		
+		start_delay_timer.stop()
+		set_applied_force(Vector2(0,0))
+		linear_velocity = Vector2(0,0)
+		var xform = state.get_transform()
+		#applied_force = Vector2(0,0)
+		
+		xform.origin.x = 320
+		xform.origin.y = 330
+		
+		reset_pressed = false
+		#reset_lasso()
+		start_delay_timer.start()
+		state.set_transform(xform)
 
 
 
@@ -91,12 +149,17 @@ func initial_impulse():
 	var angle_x = (randi() % (10 - 2) + 2)*0.1*-1
 	randomize()
 	var angle_y = (randi() % (10 - 2) + 2)*0.1*-1
-	print(angle_x, angle_y)
+	#print(angle_x, angle_y)
 	var angle_vector = Vector2(angle_x, angle_y)
-	print(angle_vector)
+	#print(angle_vector)
 	apply_impulse(Vector2(), angle_vector * 300)
-	animation_easy.play("lasso_scale_anim")
 	
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("lasso_cast"):
+		reset_pressed = true
+		#reset_lasso()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -139,7 +202,7 @@ func _process(delta):
 # Moving onto an animal
 func _on_Area2D_area_entered(area):
 	inside_lasso.append(area)
-	print("IN", inside_lasso)
+	#print("IN", inside_lasso)
 	
 	var label_01 = get_tree().get_root().get_node("Node2D/Container/label_01")
 	if label_01:
@@ -149,7 +212,7 @@ func _on_Area2D_area_entered(area):
 # Moving off an animal
 func _on_Area2D_area_exited(area):
 	inside_lasso.remove(inside_lasso.find(area))
-	print("IN", inside_lasso)
+	#print("IN", inside_lasso)
 	
 	var label_01 = get_tree().get_root().get_node("Node2D/Container/label_01")
 	label_01.text = ""
@@ -172,13 +235,17 @@ func check_if_creature_caught():
 		
 		
 func creature_captured(captured, creature):
-	print(creature)
+	#print(creature)
 	if captured:
 		var creature_node = creature.get_node("..")
 		creature_node.get_node("particles_captured").emitting = true
 		creature_node.move_after_capture()
+		#reset_pressed = true
 	else:
-		reset_lasso()
+		reset_pressed = true
+		#start_delay_timer.start()
+		#pre_reset_lasso()
+		pass
 		# Destroy the lasso or make it go back to start?
 		
 

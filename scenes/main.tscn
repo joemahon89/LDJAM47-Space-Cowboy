@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/lasso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/main.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://sprites/conveyor/conveyor_3.png" type="Texture" id=8]
 [ext_resource path="res://sprites/conveyor/conveyor_0.png" type="Texture" id=9]
 [ext_resource path="res://sprites/target.png" type="Texture" id=10]
+[ext_resource path="res://sprites/astronaut.png" type="Texture" id=11]
+[ext_resource path="res://font/PressStart2P.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -18,6 +20,9 @@ animations = [ {
 "name": "default",
 "speed": 30.0
 } ]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 12 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -34,6 +39,7 @@ __meta__ = {
 }
 
 [node name="label_01" type="Label" parent="Container"]
+visible = false
 margin_right = 360.0
 margin_bottom = 14.0
 text = "test"
@@ -43,27 +49,27 @@ __meta__ = {
 }
 
 [node name="label_02" type="Label" parent="Container"]
-margin_top = 18.0
+visible = false
 margin_right = 360.0
-margin_bottom = 32.0
+margin_bottom = 14.0
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="label_03" type="Label" parent="Container"]
-margin_top = 36.0
+visible = false
 margin_right = 360.0
-margin_bottom = 50.0
+margin_bottom = 14.0
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="label_04" type="Label" parent="Container"]
-margin_top = 54.0
+visible = false
 margin_right = 360.0
-margin_bottom = 68.0
+margin_bottom = 14.0
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -81,6 +87,7 @@ texture = ExtResource( 10 )
 [node name="conveyor_sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 184, 296 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="ground_details" type="YSort" parent="."]
@@ -91,12 +98,17 @@ playing = true
 position = Vector2( 104, 88 )
 
 [node name="lasso" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 350, 350 )
+position = Vector2( 320, 330 )
 
 [node name="lasso_anchor_point" type="Sprite" parent="."]
 visible = false
 position = Vector2( 288, 312 )
+scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 4 )
+
+[node name="astronaut" type="Sprite" parent="."]
+position = Vector2( 264, 290 )
+texture = ExtResource( 11 )
 
 [node name="creature_move_point_01" type="Sprite" parent="."]
 visible = false
@@ -111,8 +123,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="creature_move_point_03" type="Sprite" parent="."]
-visible = false
-position = Vector2( 88, 296 )
+position = Vector2( -128, 296 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
@@ -123,3 +134,27 @@ default_color = Color( 0.705882, 0.482353, 0.811765, 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 336, 224 )
+
+[node name="score_header" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 272.0
+margin_right = 73.0
+margin_bottom = 286.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0784314, 0.631373, 0.478431, 1 )
+text = "SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score_counter" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 296.0
+margin_right = 112.0
+margin_bottom = 312.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0784314, 0.631373, 0.478431, 1 )
+text = "00000"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -8,8 +8,8 @@ extends Node
 
 
 
-
-
+onready var main_node = get_tree().get_root().get_node("Node2D")
+onready var score_counter = main_node.get_node("score_counter")
 
 var level_01 = {"creature_01":4,
 				"creature_02":1}
@@ -20,9 +20,12 @@ var level_02 = {"creature_01":2,
 var total_cash = 0
 var level = level_01
 
-
+var points = 0
 
 func add_points(points_to_add):
+	points += points_to_add
+	score_counter.set_text(str(points))
+	#score_counter.set_text("%05d" % points)
 	pass
 
 

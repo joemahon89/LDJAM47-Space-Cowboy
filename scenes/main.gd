@@ -23,10 +23,10 @@ var spawn_area_y_max = 224
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	lasso_node.input_allowed = false
-	#OS.window_size = Vector2(720,720)
-	OS.window_size = Vector2(360,360)
+	OS.window_size = Vector2(720,720)
+	#OS.window_size = Vector2(360,360)
 	intialise_creatures()
-	lasso_node.reset_lasso()
+	#lasso_node.reset_lasso()
 
 
 func intialise_creatures():
