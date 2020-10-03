@@ -8,8 +8,10 @@ extends RigidBody2D
 # Chnage damp (1 for speedy, 2 for slow)
 
 var scale_speed = 0.5
+var inside_lasso = []
 onready var area2d_node = get_node("Area2D")
 onready var sprite_node = get_node("Sprite")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,5 +48,17 @@ func _process(delta):
 		sprite_node.scale.x += scale_speed * delta
 		sprite_node.scale.y += scale_speed * delta
 		
-		
-	print(self.linear_velocity)
+	#print(self.linear_velocity)
+
+
+
+
+func _on_Area2D_area_entered(area):
+	inside_lasso.append(area)
+	print("IN", inside_lasso)
+	
+
+
+func _on_Area2D_area_exited(area):
+	inside_lasso.remove(inside_lasso.find(area))
+	print("IN", inside_lasso)
