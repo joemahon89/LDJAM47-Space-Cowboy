@@ -11,7 +11,15 @@ var scale_speed = 0.5
 var inside_lasso = []
 onready var area2d_node = get_node("Area2D")
 onready var sprite_node = get_node("lasso_sprite")
-onready var rope_node = get_tree().get_root().get_node("Node2D/lasso_rope")
+
+onready var rope_node = get_node("lasso_rope")
+onready var rope_anchor_point_node = get_tree().get_root().get_node("Node2D/lasso_anchor_point")
+onready var rope_join_point_node = get_node("lasso_sprite/lasso_join_point")
+
+#onready var lasso_node = get_node("YSort/lasso")
+#onready var lasso_anchor_point_node = get_node("lasso_anchor_point")
+
+
 
 
 onready var animation_easy = get_node("animationplayer_easy")
@@ -87,7 +95,11 @@ func _process(delta):
 		
 	#print(self.linear_velocity)
 
-
+	#lasso_rope_node.points = [Vector2(0,0), Vector2(0,0)]
+	rope_node.points[0] = rope_anchor_point_node.get_global_position() - self.get_global_position()
+	rope_node.points[1] = rope_join_point_node.get_global_position() - self.get_global_position()
+	rope_node.width = 3 * sprite_node.scale.x
+	#lasso_rope_node.points[1] = lasso_join_point_node.position + lasso_node.position
 
 # Moving onto an animal
 func _on_Area2D_area_entered(area):
