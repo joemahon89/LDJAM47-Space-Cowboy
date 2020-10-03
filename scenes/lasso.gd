@@ -121,8 +121,11 @@ func check_if_creature_caught():
 		
 		
 func creature_captured(captured, creature):
+	print(creature)
 	if captured:
-		creature.get_node("particles_captured").emitting = true
+		var creature_node = creature.get_node("..")
+		creature_node.get_node("particles_captured").emitting = true
+		creature_node.move_after_capture()
 		# Move parent of lasso to the creature
 		# Move the creature towards the pen?
 	else:

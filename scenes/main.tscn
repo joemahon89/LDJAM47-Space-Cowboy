@@ -65,8 +65,22 @@ position = Vector2( 104, 88 )
 position = Vector2( 261, 280 )
 
 [node name="lasso_anchor_point" type="Sprite" parent="."]
-visible = false
 position = Vector2( 312, 312 )
+texture = ExtResource( 4 )
+
+[node name="creature_move_point_01" type="Sprite" parent="."]
+position = Vector2( 192, 248 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="creature_move_point_02" type="Sprite" parent="."]
+position = Vector2( 192, 280 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="creature_move_point_03" type="Sprite" parent="."]
+position = Vector2( 192, 312 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="lasso_rope" type="Line2D" parent="."]
