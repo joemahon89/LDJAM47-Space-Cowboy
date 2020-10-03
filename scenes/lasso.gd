@@ -89,7 +89,7 @@ func _process(delta):
 
 
 
-
+# Moving onto an animal
 func _on_Area2D_area_entered(area):
 	inside_lasso.append(area)
 	print("IN", inside_lasso)
@@ -99,8 +99,7 @@ func _on_Area2D_area_entered(area):
 		label_01.text = ""
 		for creature in inside_lasso:
 			label_01.text = label_01.text + creature.get_name() + ","
-	
-
+# Moving off an animal
 func _on_Area2D_area_exited(area):
 	inside_lasso.remove(inside_lasso.find(area))
 	print("IN", inside_lasso)
@@ -110,3 +109,27 @@ func _on_Area2D_area_exited(area):
 	if label_01:
 		for creature in inside_lasso:
 			label_01.text = label_01.text + creature.get_name() + ","
+
+# Has a creature been caught?
+func check_if_creature_caught():
+	if len(inside_lasso) > 0:
+		creature_captured(true, inside_lasso[0])
+	else:
+		creature_captured(false, null)
+
+		
+		
+		
+func creature_captured(captured, creature):
+	if captured:
+		creature.get_node("particles_captured").emitting = true
+		# Move parent of lasso to the creature
+		# Move the creature towards the pen?
+	else:
+		pass
+		# Destroy the lasso or make it go back to start?
+		
+
+func _on_animationplayer_easy_animation_finished(anim_name):
+	check_if_creature_caught()
+

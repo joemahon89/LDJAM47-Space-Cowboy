@@ -14,3 +14,16 @@ texture = ExtResource( 1 )
 position = Vector2( -16.193, -5.905 )
 scale = Vector2( 0.75, 0.75 )
 shape = SubResource( 1 )
+
+[node name="particles_captured" type="CPUParticles2D" parent="."]
+position = Vector2( -16, -6 )
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.7
+spread = 180.0
+gravity = Vector2( 0, 9.8 )
+initial_velocity = 20.0
+scale_amount = 2.0
