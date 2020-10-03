@@ -10,7 +10,7 @@ extends RigidBody2D
 var scale_speed = 0.5
 var inside_lasso = []
 onready var area2d_node = get_node("Area2D")
-onready var sprite_node = get_node("Sprite")
+onready var sprite_node = get_node("lasso_sprite")
 
 
 # Called when the node enters the scene tree for the first time.
