@@ -5,6 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="creature" type="Area2D"]
+position = Vector2( 16, 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
