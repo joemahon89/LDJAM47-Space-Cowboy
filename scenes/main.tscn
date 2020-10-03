@@ -65,6 +65,7 @@ position = Vector2( 104, 88 )
 position = Vector2( 168, 159 )
 
 [node name="lasso_anchor_point" type="Sprite" parent="."]
+visible = false
 position = Vector2( 312, 312 )
 texture = ExtResource( 4 )
 

@@ -57,8 +57,17 @@ func _on_Area2D_area_entered(area):
 	inside_lasso.append(area)
 	print("IN", inside_lasso)
 	
-
+	var label_01 = get_tree().get_root().get_node("Node2D/Container/label_01")
+	label_01.text = ""
+	for creature in inside_lasso:
+		label_01.text = label_01.text + creature.get_name() + ","
+	
 
 func _on_Area2D_area_exited(area):
 	inside_lasso.remove(inside_lasso.find(area))
 	print("IN", inside_lasso)
+	
+	var label_01 = get_tree().get_root().get_node("Node2D/Container/label_01")
+	label_01.text = ""
+	for creature in inside_lasso:
+		label_01.text = label_01.text + creature.get_name() + ","
