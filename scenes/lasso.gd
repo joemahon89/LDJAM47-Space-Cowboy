@@ -4,7 +4,12 @@ extends RigidBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var maxspeed = 5
+
+# Chnage damp (1 for speedy, 2 for slow)
+
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
