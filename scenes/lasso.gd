@@ -100,6 +100,9 @@ func _on_start_delay_timer_timeout():
 func _integrate_forces(state):
 	
 	if reset_pressed == true:
+		if global.current_captured:
+			global.current_captured.captured = false
+			global.current_captured = null
 		input_allowed = false
 		print(reset_pressed)
 		animation_easy.seek(0.0,true)
@@ -240,6 +243,7 @@ func creature_captured(captured, creature):
 		var creature_node = creature.get_node("..")
 		creature_node.get_node("particles_captured").emitting = true
 		creature_node.move_after_capture()
+		global.current_captured = creature_node
 		#reset_pressed = true
 	else:
 		reset_pressed = true

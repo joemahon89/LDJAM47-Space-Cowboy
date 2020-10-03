@@ -6,12 +6,12 @@ extends Node
 # var b = "text"
 
 
-
+var current_captured = null
 
 onready var main_node = get_tree().get_root().get_node("Node2D")
 onready var score_counter = main_node.get_node("score_counter")
 
-var level_01 = {"creature_01":4,
+var level_01 = {"creature_01":40,
 				"creature_02":1}
 				
 var level_02 = {"creature_01":2,
