@@ -9,25 +9,18 @@ extends Node
 # add some ground details, sprouts of grass etc
 # lasso resets when dropped off creature or when fails - add bad beep too
 
+# game modes
+# bad enemies kll your catch
+# get all of one type
+# get minimum score
+# only have a certain number of throws
+# only have a certain time limit allowed
 
 # BUGS
-# Lasso can go too small and bugs out
+# FIXED Lasso can go too small and bugs out
 # flip body_centre position when moiving left or right
-# Lasso can go too big
-# Stop lasso if impulse sends it off the edge of the map
+# FIXED Lasso can go too big
+# FIXED Stop lasso if impulse sends it off the edge of the map
 # disable lasso shrink and grow keybpoard commands
 # will there be a bug if capturing just as the creature reaches its normal movement destination?
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

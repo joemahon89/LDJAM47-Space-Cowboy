@@ -16,7 +16,7 @@ onready var rope_node = get_node("lasso_rope")
 onready var rope_anchor_point_node = get_tree().get_root().get_node("Node2D/lasso_anchor_point")
 onready var rope_join_point_node = get_node("lasso_sprite/lasso_join_point")
 
-#onready var lasso_node = get_node("YSort/lasso")
+onready var main_node = get_tree().get_root().get_node("Node2D")
 #onready var lasso_anchor_point_node = get_node("lasso_anchor_point")
 
 
@@ -171,17 +171,36 @@ func _process(delta):
 	if input_allowed == true:
 		
 		if Input.is_action_pressed("lasso_up"):
-			#if position.y <= main
-			direction = Vector2(0,-1)
+			# Tryiong to go too far up, push back down
+			if position.y <= main_node.spawn_area_y_min:
+				direction = Vector2(0,1)
+			else:
+				direction = Vector2(0,-1)
 			apply_impulse(Vector2(), direction * 2)
+			
 		if Input.is_action_pressed("lasso_down"):
-			direction = Vector2(0,1)
+			# Tryiong to go too far down, push back up
+			if position.y >= main_node.spawn_area_y_max+20:
+				direction = Vector2(0,-1)			
+			else:
+				direction = Vector2(0,1)
 			apply_impulse(Vector2(), direction * 2)
+			
+			
 		if Input.is_action_pressed("lasso_left"):
-			direction = Vector2(-1,0)
+			# Tryiong to go too far left, push back right
+			if position.x <= main_node.spawn_area_x_min:
+				direction = Vector2(1,0)
+			else:
+				direction = Vector2(-1,0)
 			apply_impulse(Vector2(), direction * 2)
+			
 		if Input.is_action_pressed("lasso_right"):
-			direction = Vector2(1,0)
+			# Tryiong to go too far right, push back right
+			if position.x >= main_node.spawn_area_x_max:
+				direction = Vector2(-1,0)
+			else:
+				direction = Vector2(1,0)
 			apply_impulse(Vector2(), direction * 2)
 			
 		#if direction != Vector2(0,0):
