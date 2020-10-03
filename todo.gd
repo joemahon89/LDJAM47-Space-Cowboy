@@ -7,11 +7,12 @@ extends Node
 # creature gallery
 # stats
 # add some ground details, sprouts of grass etc
-
+# lasso resets when dropped off creature or when fails - add bad beep too
 
 
 # BUGS
 # Lasso can go too small and bugs out
+# flip body_centre position when moiving left or right
 # Lasso can go too big
 # Stop lasso if impulse sends it off the edge of the map
 # disable lasso shrink and grow keybpoard commands

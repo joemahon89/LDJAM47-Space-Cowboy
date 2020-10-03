@@ -6,7 +6,7 @@ extends RigidBody2D
 # var b = "text"
 
 # Chnage damp (1 for speedy, 2 for slow)
-
+var direction = Vector2(0,0)
 var scale_speed = 0.5
 var inside_lasso = []
 onready var area2d_node = get_node("Area2D")
@@ -27,11 +27,41 @@ onready var animation_easy = get_node("animationplayer_easy")
 
 var input_allowed = true
 var start_delay_timer
+var start_delay = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_lasso_scale(Vector2(0.5, 0.5))
 	pass
+
+
+func reset_lasso():
+	self.linear_velocity = Vector2(0,0)
+	self.position = Vector2(320,330)
+	
+	input_allowed = false
+	set_lasso_scale(Vector2(0.5, 0.5))
+	#initial_impulse()
+	print("resetting")
+	#input_allowed = true
+
+	start_delay_timer = Timer.new()
+	start_delay_timer.set_wait_time(start_delay)
+	start_delay_timer.connect("timeout", self, "_on_start_delay_timer_timeout")
+	print("timer started")
+	add_child(start_delay_timer)
+	start_delay_timer.start()
+	
+func _on_start_delay_timer_timeout():
+	start_delay_timer.stop()
+	initial_impulse()
+	input_allowed = true
+
+
+
+
+
+
 
 func set_lasso_scale(scale):
 	area2d_node.scale.x = scale.x
@@ -73,18 +103,23 @@ func _process(delta):
 	
 	
 	if input_allowed == true:
+		
 		if Input.is_action_pressed("lasso_up"):
-			var direction = Vector2(0,-1)
+			#if position.y <= main
+			direction = Vector2(0,-1)
 			apply_impulse(Vector2(), direction * 2)
 		if Input.is_action_pressed("lasso_down"):
-			var direction = Vector2(0,1)
+			direction = Vector2(0,1)
 			apply_impulse(Vector2(), direction * 2)
 		if Input.is_action_pressed("lasso_left"):
-			var direction = Vector2(-1,0)
+			direction = Vector2(-1,0)
 			apply_impulse(Vector2(), direction * 2)
 		if Input.is_action_pressed("lasso_right"):
-			var direction = Vector2(1,0)
+			direction = Vector2(1,0)
 			apply_impulse(Vector2(), direction * 2)
+			
+		#if direction != Vector2(0,0):
+			
 			
 		
 		if Input.is_action_pressed("lasso_shrink"):
@@ -122,6 +157,10 @@ func _on_Area2D_area_exited(area):
 		for creature in inside_lasso:
 			label_01.text = label_01.text + creature.get_name() + ","
 
+
+
+
+
 # Has a creature been caught?
 func check_if_creature_caught():
 	if len(inside_lasso) > 0:
@@ -138,10 +177,8 @@ func creature_captured(captured, creature):
 		var creature_node = creature.get_node("..")
 		creature_node.get_node("particles_captured").emitting = true
 		creature_node.move_after_capture()
-		# Move parent of lasso to the creature
-		# Move the creature towards the pen?
 	else:
-		pass
+		reset_lasso()
 		# Destroy the lasso or make it go back to start?
 		
 

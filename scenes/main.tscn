@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/lasso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/main.gd" type="Script" id=2]
 [ext_resource path="res://scenes/creature_01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://sprites/conveyor/conveyor_4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/conveyor/conveyor_1.png" type="Texture" id=6]
+[ext_resource path="res://sprites/conveyor/conveyor_2.png" type="Texture" id=7]
+[ext_resource path="res://sprites/conveyor/conveyor_3.png" type="Texture" id=8]
+[ext_resource path="res://sprites/conveyor/conveyor_0.png" type="Texture" id=9]
+[ext_resource path="res://sprites/target.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -60,6 +74,15 @@ visible = false
 color = Color( 0.466667, 0.231373, 0.368627, 1 )
 polygon = PoolVector2Array( 24, 24, 336, 24, 336, 224, 24, 224 )
 
+[node name="target" type="Sprite" parent="."]
+position = Vector2( 192, 256 )
+texture = ExtResource( 10 )
+
+[node name="conveyor_sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 184, 296 )
+frames = SubResource( 1 )
+playing = true
+
 [node name="ground_details" type="YSort" parent="."]
 
 [node name="YSort" type="YSort" parent="."]
@@ -68,28 +91,28 @@ polygon = PoolVector2Array( 24, 24, 336, 24, 336, 224, 24, 224 )
 position = Vector2( 104, 88 )
 
 [node name="lasso" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 261, 280 )
+position = Vector2( 350, 350 )
 
 [node name="lasso_anchor_point" type="Sprite" parent="."]
 visible = false
-position = Vector2( 312, 312 )
+position = Vector2( 288, 312 )
 texture = ExtResource( 4 )
 
 [node name="creature_move_point_01" type="Sprite" parent="."]
 visible = false
-position = Vector2( 192, 248 )
+position = Vector2( 184, 249 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="creature_move_point_02" type="Sprite" parent="."]
 visible = false
-position = Vector2( 192, 280 )
+position = Vector2( 184, 296 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="creature_move_point_03" type="Sprite" parent="."]
 visible = false
-position = Vector2( 192, 312 )
+position = Vector2( 88, 296 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
