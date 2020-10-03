@@ -12,14 +12,17 @@ onready var lasso_collider = main_node.get_node("YSort/lasso")
 # thismeans can centre lasso on the head
 onready var creature_area2d = get_node("Area2D")
 onready var sprite = get_node("Sprite")
-
+# SPeed when captured (following lasso)
 export var captured_speed = 200
+# Speed when moving on own
+var move_speed = 1
 var captured = false
+var waiting = false
 
 var target = Vector2()
 var velocity = Vector2()
 
-
+var wait_timer
 
 var creature_type = "creature_02"
 
@@ -29,15 +32,16 @@ var creature_data = {
 									"sprite_offsets": Vector2(16,6),
 									"move_speed": 20,
 									"capture_points": 50,
+									"wait_after_move": [2,4],
 									},
 					"creature_02": {
 									"png": "res://sprites/creature_02.png",
 									"sprite_offsets": Vector2(-3,10),
-									"move_speed": 50,
+									"move_speed": 40,
 									"capture_points": 100,
+									"wait_after_move": [0,1],
 									}
 					}
-						
 
 
 
@@ -50,15 +54,49 @@ func _ready():
 	var creature_texture = load(creature_png)
 	sprite.set_texture(creature_texture)
 	sprite.position = creature_data[creature_type]["sprite_offsets"]
+	wait_timer = Timer.new()
+	move_speed = creature_data[creature_type]["move_speed"]
 	
-	
-	
-	main_node = get_node("")
+	# Set the creatures moving
+	set_new_target()
 	pass # Replace with function body.
 
 
 func move_before_capture():
 	captured = false
+	# Get a random point to move to
+	set_new_target()
+
+
+func wait_before_move_again(wait_time):
+	waiting = true
+	if wait_time > 0:
+		wait_timer.set_wait_time(wait_time)
+		wait_timer.connect("timeout", self, "_wait_timer_timeout")
+		print("timer started")
+		add_child(wait_timer)
+		wait_timer.start()
+	# If wait time is zero, get a new target immediately
+	# Only set a new target if there isnt one yet - may have been captured while stood still
+	else:
+		if !target:
+			set_new_target()
+	
+func _wait_timer_timeout():
+	wait_timer.stop()
+	set_new_target()
+	
+
+	
+		
+
+
+func set_new_target():
+	waiting = false
+	target = Vector2(
+					(randi() % (main_node.spawn_area_x_max - main_node.spawn_area_x_min) + main_node.spawn_area_x_min),
+					(randi() % (main_node.spawn_area_y_max - main_node.spawn_area_y_min) + main_node.spawn_area_y_min)
+					)
 
 
 
@@ -66,10 +104,10 @@ func move_after_capture():
 	captured = true
 	target = true
 	
-	
 
 func _process(delta):
-	if captured:
+	# Follow the lasso
+	if captured == true:
 		if target:
 			target = lasso_collider.global_position
 			var neck_pos = creature_area2d.global_position
@@ -77,3 +115,27 @@ func _process(delta):
 			# look_at(target)
 			if neck_pos.distance_to(target) > 2:
 				velocity = move_and_slide(velocity)
+	# Follow random points
+	if captured == false:
+		if waiting == false:
+			if target:
+				
+				var neck_pos = creature_area2d.global_position
+				velocity = neck_pos.direction_to(target) * move_speed
+				# look_at(target)
+				if neck_pos.distance_to(target) > 2:
+					velocity = move_and_slide(velocity)
+				else:
+					target = null
+					# How long to wait?
+					var wait_min = creature_data[creature_type]["wait_after_move"][0]
+					var wait_max = creature_data[creature_type]["wait_after_move"][1]
+					
+					var wait_length_before_move = (randi() % (wait_max - wait_min) + wait_min)
+					wait_before_move_again(wait_length_before_move)
+				
+				
+				
+				
+				
+				

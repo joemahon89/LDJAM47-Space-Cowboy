@@ -71,8 +71,8 @@ func initial_impulse():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	
 	if input_allowed == true:
-
 		if Input.is_action_pressed("lasso_up"):
 			var direction = Vector2(0,-1)
 			apply_impulse(Vector2(), direction * 2)
@@ -86,9 +86,9 @@ func _process(delta):
 			var direction = Vector2(1,0)
 			apply_impulse(Vector2(), direction * 2)
 			
+		
 		if Input.is_action_pressed("lasso_shrink"):
 			shrink_lasso(delta)
-			
 		if Input.is_action_pressed("lasso_grow"):
 			shrink_lasso(delta)
 		

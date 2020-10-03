@@ -6,7 +6,7 @@ extends Node
 # difficulty - speed of lasso, lasso size, animal speed
 # creature gallery
 # stats
-
+# add some ground details, sprouts of grass etc
 
 
 
@@ -14,7 +14,8 @@ extends Node
 # Lasso can go too small and bugs out
 # Lasso can go too big
 # Stop lasso if impulse sends it off the edge of the map
-
+# disable lasso shrink and grow keybpoard commands
+# will there be a bug if capturing just as the creature reaches its normal movement destination?
 
 # Declare member variables here. Examples:
 # var a = 2

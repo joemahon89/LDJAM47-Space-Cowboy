@@ -55,8 +55,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.466667, 0.231373, 0.368627, 1 )
+polygon = PoolVector2Array( 24, 24, 336, 24, 336, 224, 24, 224 )
+
+[node name="ground_details" type="YSort" parent="."]
+
 [node name="YSort" type="YSort" parent="."]
-sort_enabled = false
 
 [node name="creature" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 104, 88 )
@@ -65,20 +71,24 @@ position = Vector2( 104, 88 )
 position = Vector2( 261, 280 )
 
 [node name="lasso_anchor_point" type="Sprite" parent="."]
+visible = false
 position = Vector2( 312, 312 )
 texture = ExtResource( 4 )
 
 [node name="creature_move_point_01" type="Sprite" parent="."]
+visible = false
 position = Vector2( 192, 248 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="creature_move_point_02" type="Sprite" parent="."]
+visible = false
 position = Vector2( 192, 280 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="creature_move_point_03" type="Sprite" parent="."]
+visible = false
 position = Vector2( 192, 312 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
@@ -87,3 +97,6 @@ texture = ExtResource( 4 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 3.0
 default_color = Color( 0.705882, 0.482353, 0.811765, 1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 336, 224 )
