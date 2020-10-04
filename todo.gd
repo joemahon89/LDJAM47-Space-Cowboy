@@ -8,6 +8,8 @@ extends Node
 # stats
 # add some ground details, sprouts of grass etc
 # lasso resets when dropped off creature or when fails - add bad beep too
+# quit game from anywhere - quit menu?
+# show objectives from main?
 
 # game modes
 # bad enemies kll your catch
@@ -15,6 +17,7 @@ extends Node
 # get minimum score
 # only have a certain number of throws
 # only have a certain time limit allowed
+# capture centrain colour of one, or pests in the herd
 
 # BUGS
 # FIXED Lasso can go too small and bugs out

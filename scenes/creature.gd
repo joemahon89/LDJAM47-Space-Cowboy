@@ -128,6 +128,7 @@ func _process(delta):
 			if neck_pos.distance_to(target) > 2:
 				velocity = move_and_slide(velocity)
 			if neck_pos.distance_to(cmp01.position) <= 20:
+				velocity = move_and_slide(Vector2(0,0))
 				captured = false
 				conveyoring = true
 				target = cmp01.position
@@ -169,7 +170,9 @@ func _process(delta):
 				velocity = move_and_slide(velocity)
 		if target == cmp03.position:
 			if neck_pos.distance_to(cmp03.position) < 10:
+				global.captured_creatures.append(creature_type)
 				global.add_points(creature_data[creature_type]["capture_points"])
+				
 				#lasso_node
 				self.queue_free()
 			else:

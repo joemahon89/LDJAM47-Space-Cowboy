@@ -55,29 +55,29 @@ func _unhandled_input(event):
 
 func _on_button_tutorial_pressed():
 	global.level = global.tutorial
-	global.goto_scene("res://scenes/menu_tutorial.tscn")
+	global.goto_scene(global.tutorial_scene)
 
 
 func _on_button_level_01_pressed():
 	global.level = global.level_01
-	global.goto_scene("res://scenes/menu_level1.tscn")
+	global.goto_scene(global.level_1_scene)
 
 
 func _on_button_level_02_pressed():
 	global.level = global.level_02
-	global.goto_scene("res://scenes/menu_level2.tscn")
+	global.goto_scene(global.level_2_scene)
 
 
 func _on_button_level_03_pressed():
 	global.level = global.level_03
-	global.goto_scene("res://scenes/menu_level3.tscn")
+	global.goto_scene(global.level_3_scene)
 
 
 func _on_button_level_04_pressed():
 	global.level = global.level_04
-	global.goto_scene("res://scenes/menu_level4.tscn")
+	global.goto_scene(global.level_4_scene)
 
 
 func _on_button_level_05_pressed():
 	global.level = global.level_05
-	global.goto_scene("res://scenes/menu_level5.tscn")
+	global.goto_scene(global.level_5_scene)

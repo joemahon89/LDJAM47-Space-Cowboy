@@ -38,11 +38,20 @@ var level_04 = {"creature_01":2,
 var level_05 = {"creature_01":2,
 				"creature_02":2}
 
+var tutorial_scene = "res://scenes/menu_tutorial.tscn"
+var level_1_scene = "res://scenes/menu_level1.tscn"
+var level_2_scene = "res://scenes/menu_level2.tscn"
+var level_3_scene = "res://scenes/menu_level3.tscn"
+var level_4_scene = "res://scenes/menu_level4.tscn"
+var level_5_scene = "res://scenes/menu_level5.tscn"
+
 
 var total_cash = 0
-var level = level_01
+var level = tutorial
 
 var points = 0
+
+var captured_creatures = []
 
 func add_points(points_to_add):
 	main_node = get_tree().get_root().get_node("Node2D")
@@ -50,11 +59,44 @@ func add_points(points_to_add):
 	points += points_to_add
 	score_counter.set_text(str(points))
 	#score_counter.set_text("%05d" % points)
+	# CHeck whether this has resulted in a win
+	level_win_state_check()
 	pass
 
+var level_complete_settings = {
+								"title":"none",
+								"blurb":"none",
+								"button1":"none",
+								"button2":"none",
+								}
 
 
 
+
+func level_win_state_check():
+	if level == tutorial:
+		# win when a single cow has been caught
+		if len(captured_creatures) > 0:
+			captured_creatures = []
+			levels_complete["tutorial"] = 1
+			level_complete_settings["title"] = "Tutorial Complete"
+			level_complete_settings["blurb"] = "Well done on catching a FLUMBER!"
+			level_complete_settings["button1"] = ["NEXT LEVEL", level_1_scene, level_01]
+			level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_01]
+			end_level("success")
+		# No fail state for tutorial
+		else:
+			pass
+
+
+func end_level(success_or_fail):
+	if success_or_fail == "success":
+		print("success")
+		global.goto_scene("res://scenes/level_complete.tscn")
+	elif success_or_fail == "fail":
+		print("fail")
+		global.goto_scene("res://scenes/level_complete.tscn")
+		
 
 func _ready():
 	OS.window_size = Vector2(720,720)

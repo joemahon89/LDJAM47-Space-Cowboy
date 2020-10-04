@@ -20,3 +20,6 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		print("loading main")
 		global.goto_scene("res://scenes/main.tscn")
+
+
+
