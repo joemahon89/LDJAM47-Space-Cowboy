@@ -25,9 +25,17 @@ func _ready():
 		
 	#if global.levels_complete["level1"]
 	
-
+	var debug = true
 		
-	
+	if debug == true:
+		button_level_02.focus_mode = FOCUS_ALL
+		button_level_02.disabled = false
+		button_level_03.focus_mode = FOCUS_ALL
+		button_level_03.disabled = false
+		button_level_04.focus_mode = FOCUS_ALL
+		button_level_04.disabled = false
+		button_level_05.focus_mode = FOCUS_ALL
+		button_level_05.disabled = false
 		
 		
 	# Set 'completed' to buttons if the levels have been completed
@@ -65,9 +73,11 @@ func _ready():
 		button_level_04.grab_focus()
 	elif global.level == global.level_05:
 		button_level_05.grab_focus()
+	else:
+		button_tutorial.grab_focus()
 		
-		
-	var debug = true
+	
+	
 	if debug == true:
 		button_level_02.focus_mode = FOCUS_ALL
 		button_level_02.disabled = false
