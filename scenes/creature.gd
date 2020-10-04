@@ -32,6 +32,7 @@ var creature_type = "creature_02"
 var creature_data = {
 					"creature_01": {
 									"png": "res://sprites/creature_01.png",
+									"name": "FLUMBER",
 									"sprite_offsets": Vector2(16,6),
 									"body_centre": Vector2(10,10),
 									"move_speed": 20,
@@ -40,6 +41,7 @@ var creature_data = {
 									},
 					"creature_02": {
 									"png": "res://sprites/creature_02.png",
+									"name": "PIKKA",
 									"sprite_offsets": Vector2(-3,10),
 									"body_centre": Vector2(0,8),
 									"move_speed": 40,

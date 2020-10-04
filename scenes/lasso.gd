@@ -27,7 +27,7 @@ onready var animation_easy = get_node("animationplayer_easy")
 
 var input_allowed = true
 var start_delay_timer = Timer.new()
-var start_delay = 1
+var start_delay = 0.1
 var reset_pressed = false
 
 # Called when the node enters the scene tree for the first time.
@@ -154,8 +154,13 @@ func initial_impulse():
 	var angle_y = (randi() % (10 - 2) + 2)*0.1*-1
 	#print(angle_x, angle_y)
 	var angle_vector = Vector2(angle_x, angle_y)
-	#print(angle_vector)
-	apply_impulse(Vector2(), angle_vector * 300)
+	
+	var impulse_options = Vector2(-0.5,-0.5)
+	
+	# Old random impulse dir
+	#apply_impulse(Vector2(), angle_vector * 300)
+	# New choose from list impuse options
+	apply_impulse(Vector2(), impulse_options * 300)
 	
 	
 func _unhandled_input(event):

@@ -4,7 +4,7 @@ extends Node
 # button to cancel and throw a new one
 # score (score adds if hover over and score gets big if catch one)
 # difficulty - speed of lasso, lasso size, animal speed
-# creature gallery
+# creature gallery - details of each and names
 # stats
 # add some ground details, sprouts of grass etc
 # lasso resets when dropped off creature or when fails - add bad beep too
