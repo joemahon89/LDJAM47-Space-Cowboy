@@ -70,7 +70,8 @@ var level_complete_settings = {
 								"button2":"none",
 								}
 
-
+# Manual fail states for setting (eg level 3 timer)
+var level_3_fail = false
 
 
 func level_win_state_check():
@@ -132,8 +133,28 @@ func level_win_state_check():
 				end_level()
 		
 	# LEVEL 3 WIN STATE
-	#if level == level_03:
-		# Ran out of time (check if collected them all or not)
+	if level == level_03:
+		if level_3_fail == false:
+			# Captured within time limit
+			if len(captured_creatures) == level_03["creature_04"]:
+				captured_creatures = []
+				levels_complete["level2"] = 1
+				level_complete_settings["title"] = "Level 3 Complete"
+				level_complete_settings["blurb"] = "Thats the fastest those lazy BLUBBERBOBS have ever had to travel!"
+				level_complete_settings["button1"] = ["NEXT LEVEL", level_4_scene, level_04]
+				level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_04]
+				end_level()
+		elif level_3_fail == true:
+			# ran out of time
+			captured_creatures = []
+			level_complete_settings["title"] = "Level 3 Failed"
+			level_complete_settings["blurb"] = "Oh no, you didn't get them all inside in time!"
+			level_complete_settings["button1"] = ["TRY AGAIN", level_3_scene, level_03]
+			level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_03]
+			end_level()
+
+
+
 
 
 func end_level():

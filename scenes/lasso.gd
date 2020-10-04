@@ -32,6 +32,7 @@ var reset_pressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	global.lasso_casts = 0
 	set_lasso_scale(Vector2(0.5, 0.5))
 	
 	start_delay_timer.set_one_shot(true)

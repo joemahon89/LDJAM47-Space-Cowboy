@@ -89,7 +89,7 @@ texture = ExtResource( 10 )
 [node name="conveyor_sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 184, 296 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="ground_details" type="YSort" parent="."]
