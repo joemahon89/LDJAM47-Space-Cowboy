@@ -38,7 +38,8 @@ func _ready():
 	start_delay_timer.set_wait_time(start_delay)
 	start_delay_timer.connect("timeout", self, "_on_start_delay_timer_timeout")
 	add_child(start_delay_timer)
-	start_delay_timer.start()
+	# Enable if want autostart
+	#start_delay_timer.start()
 	input_allowed = false
 	pass
 
@@ -58,6 +59,7 @@ func pre_reset_lasso():
 		
 	reset_pressed = false
 	#reset_lasso()
+	
 	start_delay_timer.start()
 
 
@@ -92,6 +94,7 @@ func reset_lasso():
 func _on_start_delay_timer_timeout():
 	start_delay_timer.stop()
 	input_allowed = true
+	
 	reset_lasso()
 	animation_easy.play("lasso_scale_anim")
 	
@@ -148,19 +151,26 @@ func grow_lasso(delta):
 
 
 func initial_impulse():
-	randomize()
-	var angle_x = (randi() % (10 - 2) + 2)*0.1*-1
-	randomize()
-	var angle_y = (randi() % (10 - 2) + 2)*0.1*-1
-	#print(angle_x, angle_y)
-	var angle_vector = Vector2(angle_x, angle_y)
-	
-	var impulse_options = Vector2(-0.5,-0.5)
-	
 	# Old random impulse dir
+#	randomize()
+#	var angle_x = (randi() % (10 - 2) + 2)*0.1*-1
+#	randomize()
+#	var angle_y = (randi() % (10 - 2) + 2)*0.1*-1
+#	var angle_vector = Vector2(angle_x, angle_y)
 	#apply_impulse(Vector2(), angle_vector * 300)
+	
 	# New choose from list impuse options
-	apply_impulse(Vector2(), impulse_options * 300)
+	var impulse_options = [Vector2(-0.5,-0.5),
+						   Vector2(-0.3,-0.7),
+							Vector2(-0.6,-0.3),
+							]
+	var impulse_strengths = [300, 400, 500]
+	randomize()
+	var impulse_option = impulse_options[randi() % impulse_options.size()]
+	randomize()
+	var impulse_strength = impulse_strengths[randi() % impulse_strengths.size()]
+	
+	apply_impulse(Vector2(), impulse_option * impulse_strength)
 	
 	
 func _unhandled_input(event):

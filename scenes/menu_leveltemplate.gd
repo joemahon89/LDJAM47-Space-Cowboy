@@ -13,7 +13,10 @@ func _ready():
 
 
 func _unhandled_input(event):
+	print("test")
 	if event.is_action_pressed("ui_cancel"):
 		global.goto_scene("res://scenes/menu_levelselect.tscn")
-	if event.is_action_pressed("ui_select"):
+		
+	if event.is_action_pressed("ui_accept"):
+		print("loading main")
 		global.goto_scene("res://scenes/main.tscn")

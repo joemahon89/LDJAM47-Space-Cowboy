@@ -1,26 +1,51 @@
 extends Control
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var button_tutorial
+var button_level_01
+var button_level_02
+var button_level_03
+var button_level_04
+var button_level_05
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	button_tutorial = get_node("HBoxContainer/VBoxContainer/button_tutorial")
+	button_level_01 = get_node("HBoxContainer/VBoxContainer/button_level_01")
+	button_level_02 = get_node("HBoxContainer/VBoxContainer/button_level_02")
+	button_level_03 = get_node("HBoxContainer/VBoxContainer/button_level_03")
+	button_level_04 = get_node("HBoxContainer/VBoxContainer/button_level_04")
+	button_level_05 = get_node("HBoxContainer/VBoxContainer/button_level_05")
+	
 	# Set button focuses
 	if global.level == global.tutorial:
-		get_node("HBoxContainer/VBoxContainer/button_tutorial").grab_focus()
+		button_tutorial.grab_focus()
 	elif global.level == global.level_01:
-		get_node("HBoxContainer/VBoxContainer/button_level_01").grab_focus()
+		button_level_01.grab_focus()
 	elif global.level == global.level_02:
-		get_node("HBoxContainer/VBoxContainer/button_level_02").grab_focus()
+		button_level_02.grab_focus()
 	elif global.level == global.level_03:
-		get_node("HBoxContainer/VBoxContainer/button_level_03").grab_focus()
+		button_level_03.grab_focus()
 	elif global.level == global.level_04:
-		get_node("HBoxContainer/VBoxContainer/button_level_04").grab_focus()
+		button_level_04.grab_focus()
 	elif global.level == global.level_05:
-		get_node("HBoxContainer/VBoxContainer/button_level_05").grab_focus()
+		button_level_05.grab_focus()
+		
+		
+	# Set 'completed' to buttons if the levels have been completed
+	if global.levels_complete["tutorial"] == 1:
+		button_tutorial.text = "TUTORIAL" + " - COMPLETED!"
+	if global.levels_complete["level1"] == 1:
+		button_tutorial.text = "Level 1" + " - COMPLETED!"
+	if global.levels_complete["level2"] == 1:
+		button_tutorial.text = "Level 2" + " - COMPLETED!"
+	if global.levels_complete["level3"] == 1:
+		button_tutorial.text = "Level 3" + " - COMPLETED!"
+	if global.levels_complete["level4"] == 1:
+		button_tutorial.text = "Level 4" + " - COMPLETED!"
+	if global.levels_complete["level5"] == 1:
+		button_tutorial.text = "Level 5" + " - COMPLETED!"
 		
 
 func _unhandled_input(event):

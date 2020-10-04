@@ -17,8 +17,6 @@ _global_script_class_icons={
 
 config/name="loop"
 run/main_scene="res://scenes/menu.tscn"
-run/disable_stdout=true
-run/disable_stderr=true
 config/icon="res://icon.png"
 
 [autoload]

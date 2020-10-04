@@ -3,7 +3,7 @@
 [ext_resource path="res://font/basic_text.tres" type="DynamicFont" id=1]
 [ext_resource path="res://font/3Dventure.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scenes/menu_leveltemplate.gd" type="Script" id=3]
-[ext_resource path="res://sprites/creature_01.png" type="Texture" id=4]
+[ext_resource path="res://sprites/creature_02.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -65,9 +65,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 1 )
-text = "Lets start with some slow moving animals.
+text = "A bit trickier this time!
 
-Catch a single FLUMBER
+Catch a PIKKA with only 5 throws of your loop!
 
 "
 align = 1
@@ -105,4 +105,4 @@ size_flags_vertical = 3
 
 [node name="sprite_bottom_right" type="Sprite" parent="."]
 position = Vector2( 180, 225 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
