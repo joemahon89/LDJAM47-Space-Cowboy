@@ -30,8 +30,7 @@ var level_02 = {"creature_01":5,
 
 var level_03 = {"creature_04":3,}
 
-var level_04 = {"creature_01":2,
-				"creature_02":2}
+var level_04 = {"creature_05":20,}
 
 var level_05 = {"creature_01":2,
 				"creature_02":2}
@@ -72,7 +71,7 @@ var level_complete_settings = {
 
 # Manual fail states for setting (eg level 3 timer)
 var level_3_fail = false
-
+var level_4_fail = false
 
 func level_win_state_check():
 	# TUTORIAL WIN STATE
@@ -138,7 +137,7 @@ func level_win_state_check():
 			# Captured within time limit
 			if len(captured_creatures) == level_03["creature_04"]:
 				captured_creatures = []
-				levels_complete["level2"] = 1
+				levels_complete["level3"] = 1
 				level_complete_settings["title"] = "Level 3 Complete"
 				level_complete_settings["blurb"] = "Thats the fastest those lazy BLUBBERBOBS have ever had to travel!"
 				level_complete_settings["button1"] = ["NEXT LEVEL", level_4_scene, level_04]
@@ -153,7 +152,26 @@ func level_win_state_check():
 			level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_03]
 			end_level()
 
-
+	# LEVEL 4 WIN STATE
+	if level == level_04:
+		if level_4_fail == false:
+			# Captured within time limit
+			if len(captured_creatures) >= 5:
+				captured_creatures = []
+				levels_complete["level4"] = 1
+				level_complete_settings["title"] = "Level 4 Complete"
+				level_complete_settings["blurb"] = "Well done, you managed not to get snipped too much!"
+				level_complete_settings["button1"] = ["NEXT LEVEL", level_5_scene, level_05]
+				level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_05]
+				end_level()
+		elif level_4_fail == true:
+			# ran out of time
+			captured_creatures = []
+			level_complete_settings["title"] = "Level 4 Failed"
+			level_complete_settings["blurb"] = "Looks like those GROGSNIPPERS were too much to handle!"
+			level_complete_settings["button1"] = ["TRY AGAIN", level_4_scene, level_04]
+			level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_04]
+			end_level()
 
 
 

@@ -104,12 +104,14 @@ func _on_button_level_02_pressed():
 func _on_button_level_03_pressed():
 	global.level = global.level_03
 	global.leveltimer = true
+	global.leveltimer_amount = 20
 	global.goto_scene(global.level_3_scene)
 
 
 func _on_button_level_04_pressed():
 	global.level = global.level_04
-	global.leveltimer = false
+	global.leveltimer = true
+	global.leveltimer_amount = 30
 	global.goto_scene(global.level_4_scene)
 
 

@@ -67,8 +67,16 @@ var creature_data = {
 									"capture_points": 100,
 									"wait_after_move": [3,4],
 									},
+					"creature_05": {
+									"png": "res://sprites/creature_05.png",
+									"name": "GROGSNIPPER",
+									"sprite_offsets": Vector2(3,11),
+									"body_centre": Vector2(0,11),
+									"move_speed": 20,
+									"capture_points": 100,
+									"wait_after_move": [0,2],
+									},
 					}
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -93,6 +101,8 @@ func move_before_capture():
 	captured = false
 	# Get a random point to move to
 	set_new_target()
+	if creature_type == "creature_05":
+		get_node("Area2D/CollisionShape2D").scale = Vector2(0.75,0.75)
 
 
 func wait_before_move_again(wait_time):
@@ -130,6 +140,9 @@ func set_new_target():
 func move_after_capture():
 	captured = true
 	target = true
+	# set grogsnipper to be freed by friends if close enough
+	if creature_type == "creature_05":
+		get_node("Area2D/CollisionShape2D").scale = Vector2(1.4,1.4)
 	
 #func handle_conveyorbelts():
 	#target = 
@@ -158,7 +171,6 @@ func _process(delta):
 	if captured == false:
 		if waiting == false:
 			if target:
-				
 				var neck_pos = creature_area2d.global_position
 				velocity = neck_pos.direction_to(target) * move_speed
 				# look_at(target)
@@ -200,3 +212,18 @@ func _process(delta):
 				velocity = neck_pos.direction_to(target) * conveyor_speed
 				velocity = move_and_slide(velocity)
 				
+
+
+
+func _on_Area2D_area_entered(area):
+	print("blah")
+	# for grogsnipper freeing eeach other
+	if creature_type == "creature_05":
+		print("blah2")
+		if captured ==  true:
+			print("blah3")
+			move_before_capture()
+			lasso_collider.reset_pressed = true
+	
+	
+	pass # Replace with function body.

@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://font/basic_text.tres" type="DynamicFont" id=1]
+[ext_resource path="res://font/3Dventure.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/menu_leveltemplate.gd" type="Script" id=3]
+[ext_resource path="res://sprites/creature_05.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container_l" type="Container" parent="HBoxContainer"]
+margin_right = 29.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 33.0
+margin_right = 326.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Container_top" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_right = 293.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="title_label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 293.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "LEVEL 4"
+align = 1
+valign = 1
+
+[node name="blurb_label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 293.0
+margin_bottom = 223.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_fonts/font = ExtResource( 1 )
+text = "Your GROGSNIPPERs have escaped! 
+Capture 4 in 30 seconds!
+
+Beware, they will cut each other loose from your LOOP if they get too close!
+
+"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 227.0
+margin_right = 293.0
+margin_bottom = 313.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+text = "Press SPACE to start
+
+Press ESC to go back"
+align = 1
+valign = 1
+
+[node name="Container_bottom" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_top = 317.0
+margin_right = 293.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Container_r" type="Container" parent="HBoxContainer"]
+margin_left = 330.0
+margin_right = 360.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="sprite_bottom_right" type="Sprite" parent="."]
+position = Vector2( 182, 210 )
+texture = ExtResource( 4 )

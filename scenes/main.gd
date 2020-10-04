@@ -53,7 +53,9 @@ func update_time():
 	leveltimer_total_time -= leveltimer_update_interval
 	timecounter.set_text("TIME REMAINING:" + "%.2f" % (leveltimer_total_time))
 	if leveltimer_total_time <= 0:
-		
+		global.level_3_fail = true
+		global.level_4_fail = true
+		global.level_win_state_check()
 		pass
 		# END LEVEL
 	

@@ -119,5 +119,5 @@ lasso_cast={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.203922, 0.0901961, 0.2, 1 )
+environment/default_clear_color=Color( 0.294118, 0.188235, 0.329412, 1 )
 environment/default_environment="res://default_env.tres"
