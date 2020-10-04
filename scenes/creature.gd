@@ -149,7 +149,7 @@ func move_after_capture():
 #	pass
 	
 
-func _process(delta):
+func _process(_delta):
 	# Follow the lasso
 	if captured == true:
 		if target:
@@ -217,7 +217,7 @@ func _process(delta):
 
 
 
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(_area):
 	# for grogsnipper freeing eeach other
 	if creature_type == "creature_05":
 

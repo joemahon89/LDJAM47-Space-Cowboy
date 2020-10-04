@@ -8,7 +8,7 @@ extends Node
 # stats
 # add some ground details, sprouts of grass etc
 # DONE lasso resets when dropped off creature or when fails - add bad beep too
-# sound effects
+# DONE sound effects
 # quit game from anywhere - quit menu?
 # show objectives from main?
 # count how many creatures to capture or lasso throws remaining?

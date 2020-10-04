@@ -163,7 +163,7 @@ func level_win_state_check():
 	if level == level_04:
 		if level_4_fail == false:
 			# Captured within time limit
-			if len(captured_creatures) >= 5:
+			if len(captured_creatures) >= 4:
 				AudioStreamManager.play("res://sounds/level_success.wav")
 				captured_creatures = []
 				levels_complete["level4"] = 1

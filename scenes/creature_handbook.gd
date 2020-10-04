@@ -17,9 +17,5 @@ func _unhandled_input(event):
 		AudioStreamManager.play("res://sounds/menu_back.wav")
 		global.goto_scene("res://scenes/menu_levelselect.tscn")
 		
-	if event.is_action_pressed("ui_accept"):
-		AudioStreamManager.play("res://sounds/menu_select.wav")
-		global.goto_scene("res://scenes/main.tscn")
-
 
 

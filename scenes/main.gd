@@ -67,7 +67,7 @@ func intialise_creatures():
 	randomize()
 	for creature_type in global.level.keys():
 		var number_of_this_creature_type = global.level[creature_type]
-		for each_creature in range(0,number_of_this_creature_type):
+		for _each_creature in range(0,number_of_this_creature_type):
 			var creature_instance = creature_scene.instance()
 			var random_spawn_point = Vector2(
 											(randi() % (spawn_area_x_max - spawn_area_x_min) + spawn_area_x_min),

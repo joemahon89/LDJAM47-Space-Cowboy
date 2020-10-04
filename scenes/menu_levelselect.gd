@@ -136,3 +136,11 @@ func _on_button_level_04_pressed():
 #	global.level = global.level_05
 #	global.leveltimer = false
 #	global.goto_scene(global.level_5_scene)
+
+
+func _on_creature_handbook_pressed():
+	pass # Replace with function body.
+	
+	
+	
+	

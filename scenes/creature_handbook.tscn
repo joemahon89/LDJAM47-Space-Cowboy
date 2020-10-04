@@ -1,0 +1,155 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://font/basic_text.tres" type="DynamicFont" id=1]
+[ext_resource path="res://font/3Dventure.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/creature_handbook.gd" type="Script" id=3]
+[ext_resource path="res://font/PressStart2P.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sprites/creature_02.png" type="Texture" id=5]
+[ext_resource path="res://sprites/creature_04.png" type="Texture" id=6]
+[ext_resource path="res://sprites/creature_03.png" type="Texture" id=7]
+[ext_resource path="res://sprites/creature_05.png" type="Texture" id=8]
+[ext_resource path="res://sprites/creature_01.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 4 )
+
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container_l" type="Container" parent="HBoxContainer"]
+margin_right = 11.0
+margin_bottom = 383.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 15.0
+margin_right = 345.0
+margin_bottom = 383.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Container_top" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_right = 330.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="title_label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 4.0
+margin_right = 330.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "CREATURE HANDBOOK"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 38.0
+margin_right = 330.0
+margin_bottom = 343.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Container" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 54.0
+margin_bottom = 305.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="blurb_label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 58.0
+margin_right = 330.0
+margin_bottom = 305.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+custom_fonts/font = SubResource( 2 )
+text = "FLUMBER
+Slow and simpleminded. It's constant flatulence is the reason for the planet's 85% methane atmostphere.
+
+PIKKA
+A small, skittish three-legged creature. It's blue fur is sheared to make exotic underwear.
+
+SPACE CRAB
+A large parasitic animal similar to the crabs on Earth, except 10 times bigger and capable of biting your arm off. 
+
+BLUBBERBOB
+A chubby, lumbering animal. It produces large amounts of disgusting green bile, used
+to make childrens crayons.
+
+GROGSNIPPER
+These insect-like creatures live in large groups. Their shedded skin is used to make a popular breakfast cereal."
+valign = 1
+autowrap = true
+
+[node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 347.0
+margin_right = 330.0
+margin_bottom = 368.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+text = "Press ESC to go back"
+align = 1
+valign = 1
+
+[node name="Container_bottom" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_top = 372.0
+margin_right = 330.0
+margin_bottom = 383.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Container_r" type="Container" parent="HBoxContainer"]
+margin_left = 349.0
+margin_right = 360.0
+margin_bottom = 383.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="sprite_bottom_right" type="Sprite" parent="."]
+position = Vector2( 38, 130.439 )
+texture = ExtResource( 5 )
+
+[node name="sprite_bottom_right4" type="Sprite" parent="."]
+position = Vector2( 39, 189 )
+texture = ExtResource( 7 )
+
+[node name="sprite_bottom_right2" type="Sprite" parent="."]
+position = Vector2( 46, 242 )
+texture = ExtResource( 6 )
+
+[node name="sprite_bottom_right5" type="Sprite" parent="."]
+position = Vector2( 46, 306 )
+texture = ExtResource( 8 )
+
+[node name="sprite_bottom_right3" type="Sprite" parent="."]
+position = Vector2( 43, 64 )
+texture = ExtResource( 9 )

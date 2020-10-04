@@ -57,14 +57,14 @@ size_flags_stretch_ratio = 10.0
 
 [node name="Container_top" type="Container" parent="HBoxContainer/VBoxContainer"]
 margin_right = 293.0
-margin_bottom = 29.0
+margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="title_label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 33.0
+margin_top = 26.0
 margin_right = 293.0
-margin_bottom = 93.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -74,9 +74,9 @@ align = 1
 valign = 1
 
 [node name="button_tutorial" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 97.0
+margin_top = 75.0
 margin_right = 293.0
-margin_bottom = 127.0
+margin_bottom = 98.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 2 )
@@ -96,9 +96,9 @@ __meta__ = {
 }
 
 [node name="button_level_01" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 131.0
+margin_top = 102.0
 margin_right = 293.0
-margin_bottom = 161.0
+margin_bottom = 124.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/hover = SubResource( 2 )
@@ -118,9 +118,9 @@ __meta__ = {
 }
 
 [node name="button_level_02" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 165.0
+margin_top = 128.0
 margin_right = 293.0
-margin_bottom = 194.0
+margin_bottom = 151.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -142,9 +142,9 @@ __meta__ = {
 }
 
 [node name="button_level_03" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 198.0
+margin_top = 155.0
 margin_right = 293.0
-margin_bottom = 228.0
+margin_bottom = 177.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -166,9 +166,9 @@ __meta__ = {
 }
 
 [node name="button_level_04" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 232.0
+margin_top = 181.0
 margin_right = 293.0
-margin_bottom = 262.0
+margin_bottom = 204.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -214,10 +214,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 266.0
+[node name="Container" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_top = 208.0
 margin_right = 293.0
-margin_bottom = 326.0
+margin_bottom = 231.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="creature handbook" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 235.0
+margin_right = 293.0
+margin_bottom = 257.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "CREATURE HANDBOOK"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container2" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_top = 261.0
+margin_right = 293.0
+margin_bottom = 284.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 293.0
+margin_bottom = 333.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -231,7 +267,7 @@ valign = 1
 autowrap = true
 
 [node name="Container_bottom" type="Container" parent="HBoxContainer/VBoxContainer"]
-margin_top = 330.0
+margin_top = 337.0
 margin_right = 293.0
 margin_bottom = 360.0
 size_flags_horizontal = 3
@@ -245,11 +281,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="sprite_bottom_right" type="Sprite" parent="."]
-position = Vector2( 321, 321 )
+position = Vector2( 281, 248 )
 texture = ExtResource( 4 )
 
 [node name="sprite_bottom_left" type="Sprite" parent="."]
-position = Vector2( 41, 321 )
+position = Vector2( 87, 253 )
 texture = ExtResource( 5 )
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/button_tutorial" to="." method="_on_button_tutorial_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/button_level_01" to="." method="_on_button_level_01_pressed"]
@@ -257,3 +293,4 @@ texture = ExtResource( 5 )
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/button_level_03" to="." method="_on_button_level_03_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/button_level_04" to="." method="_on_button_level_04_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/button_level_05" to="." method="_on_button_level_05_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/creature handbook" to="." method="_on_creature_handbook_pressed"]
