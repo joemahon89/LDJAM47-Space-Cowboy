@@ -73,7 +73,7 @@ func reset_lasso():
 	position = Vector2(320,330)
 	set_lasso_scale(Vector2(0.5, 0.5))
 	set_mode(0)
-	initial_impulse()
+	#initial_impulse()
 
 #	print("timer started")
 	#start_delay_timer.stop()
@@ -96,7 +96,7 @@ func _on_start_delay_timer_timeout():
 	input_allowed = true
 	
 	reset_lasso()
-	animation_easy.play("lasso_scale_anim")
+	
 	
 
 
@@ -107,11 +107,12 @@ func _integrate_forces(state):
 			global.current_captured.captured = false
 			global.current_captured = null
 		input_allowed = false
+		
 		print(reset_pressed)
 		animation_easy.seek(0.0,true)
 		animation_easy.stop(true)
 		
-		start_delay_timer.stop()
+		#start_delay_timer.stop()
 		set_applied_force(Vector2(0,0))
 		linear_velocity = Vector2(0,0)
 		var xform = state.get_transform()
@@ -122,7 +123,7 @@ func _integrate_forces(state):
 		
 		reset_pressed = false
 		#reset_lasso()
-		start_delay_timer.start()
+		#start_delay_timer.start()
 		state.set_transform(xform)
 
 
@@ -151,6 +152,7 @@ func grow_lasso(delta):
 
 
 func initial_impulse():
+	print("impulsing")
 	# Old random impulse dir
 #	randomize()
 #	var angle_x = (randi() % (10 - 2) + 2)*0.1*-1
@@ -175,8 +177,20 @@ func initial_impulse():
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("lasso_cast"):
-		reset_pressed = true
-		#reset_lasso()
+		if animation_easy.is_playing():
+			reset_pressed = true
+		elif len(inside_lasso) > 0:
+			# get rid of animal
+			inside_lasso[0].get_node("..").move_before_capture()
+			reset_pressed = true
+		else:
+			input_allowed = true
+			print("firing")
+			fire_lasso()
+
+func fire_lasso():
+	animation_easy.play("lasso_scale_anim")
+	initial_impulse()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
