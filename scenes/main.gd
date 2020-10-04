@@ -19,6 +19,12 @@ var spawn_area_y_min = 24
 var spawn_area_y_max = 224
 
 
+var leveltimer
+onready var timecounter = get_node("time_counter")
+var leveltimer_total_time
+var leveltimer_update_interval = 0.10
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +33,33 @@ func _ready():
 	intialise_creatures()
 	#lasso_node.reset_lasso()
 
+
+	if global.leveltimer == true:
+		leveltimer_total_time = global.leveltimer_amount
+		leveltimer = Timer.new()
+		#leveltimer.set_one_shot(false)
+		#leveltimer.set_timer_process_mode(TIMER_PROCESS_FIXED)
+		leveltimer.set_wait_time(leveltimer_update_interval)
+		leveltimer.connect("timeout", self, "update_time")
+		add_child(leveltimer)
+		leveltimer.start()
+	else:
+		timecounter.set_visible(false)
+		pass
+	
+
+
+func update_time():
+	leveltimer_total_time -= leveltimer_update_interval
+	timecounter.set_text("TIME REMAINING:" + "%.2f" % (leveltimer_total_time))
+	if leveltimer_total_time <= 0:
+		
+		pass
+		# END LEVEL
+	
+	
+	
+	
 
 func intialise_creatures():
 	randomize()

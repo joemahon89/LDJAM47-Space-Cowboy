@@ -21,6 +21,7 @@ var move_speed = 1
 var captured = false
 var waiting = false
 var conveyoring = false
+var conveyor_speed = 30
 
 var target = Vector2()
 var velocity = Vector2()
@@ -44,10 +45,28 @@ var creature_data = {
 									"name": "PIKKA",
 									"sprite_offsets": Vector2(-3,10),
 									"body_centre": Vector2(0,8),
-									"move_speed": 40,
+									"move_speed": 50,
 									"capture_points": 100,
 									"wait_after_move": [0,1],
-									}
+									},
+					"creature_03": {
+									"png": "res://sprites/creature_03.png",
+									"name": "SPACE CRAB",
+									"sprite_offsets": Vector2(2,-1),
+									"body_centre": Vector2(2,-1),
+									"move_speed": 30,
+									"capture_points": 100,
+									"wait_after_move": [0,1],
+									},
+					"creature_04": {
+									"png": "res://sprites/creature_04.png",
+									"name": "BLUBBERBOB",
+									"sprite_offsets": Vector2(16,7),
+									"body_centre": Vector2(12,13),
+									"move_speed": 10,
+									"capture_points": 100,
+									"wait_after_move": [3,4],
+									},
 					}
 
 
@@ -162,11 +181,13 @@ func _process(delta):
 			if neck_pos.distance_to(cmp01.position) < 10:
 				target = cmp02.position
 			else:
+				velocity = neck_pos.direction_to(target) * conveyor_speed
 				velocity = move_and_slide(velocity)
 		if target == cmp02.position:
 			if neck_pos.distance_to(cmp02.position) < 10:
 				target = cmp03.position
 			else:
+				velocity = neck_pos.direction_to(target) * conveyor_speed
 				velocity = move_and_slide(velocity)
 		if target == cmp03.position:
 			if neck_pos.distance_to(cmp03.position) < 10:
@@ -176,5 +197,6 @@ func _process(delta):
 				#lasso_node
 				self.queue_free()
 			else:
+				velocity = neck_pos.direction_to(target) * conveyor_speed
 				velocity = move_and_slide(velocity)
 				

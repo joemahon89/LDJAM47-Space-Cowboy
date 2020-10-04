@@ -186,7 +186,10 @@ func _unhandled_input(event):
 		else:
 			input_allowed = true
 			print("firing")
+			global.lasso_casts += 1
+			global.level_win_state_check()
 			fire_lasso()
+			
 
 func fire_lasso():
 	animation_easy.play("lasso_scale_anim")
@@ -289,9 +292,11 @@ func creature_captured(captured, creature):
 	#print(creature)
 	if captured:
 		var creature_node = creature.get_node("..")
+		global.current_captured = creature_node
 		creature_node.get_node("particles_captured").emitting = true
 		creature_node.move_after_capture()
-		global.current_captured = creature_node
+		global.level_win_state_check()
+		#global.current_captured = creature_node
 		#reset_pressed = true
 	else:
 		reset_pressed = true

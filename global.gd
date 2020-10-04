@@ -23,14 +23,12 @@ var levels_complete = {
 
 var tutorial = {"creature_01":5}
 
-var level_01 = {"creature_01":40,
-				"creature_02":1}
-				
-var level_02 = {"creature_01":2,
-				"creature_02":2}
+var level_01 = {"creature_02":8}
+var level_02 = {"creature_01":5,
+				"creature_03":25,
+				}
 
-var level_03 = {"creature_01":2,
-				"creature_02":2}
+var level_03 = {"creature_04":3,}
 
 var level_04 = {"creature_01":2,
 				"creature_02":2}
@@ -48,10 +46,12 @@ var level_5_scene = "res://scenes/menu_level5.tscn"
 
 var total_cash = 0
 var level = tutorial
-
+var leveltimer = false
+var leveltimer_amount = 20
 var points = 0
 
 var captured_creatures = []
+var lasso_casts = 0
 
 func add_points(points_to_add):
 	main_node = get_tree().get_root().get_node("Node2D")
@@ -74,6 +74,7 @@ var level_complete_settings = {
 
 
 func level_win_state_check():
+	# TUTORIAL WIN STATE
 	if level == tutorial:
 		# win when a single cow has been caught
 		if len(captured_creatures) > 0:
@@ -83,19 +84,70 @@ func level_win_state_check():
 			level_complete_settings["blurb"] = "Well done on catching a FLUMBER!"
 			level_complete_settings["button1"] = ["NEXT LEVEL", level_1_scene, level_01]
 			level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_01]
-			end_level("success")
+			end_level()
 		# No fail state for tutorial
 		else:
 			pass
 
+	# LEVEL 1 WIN STATE
+	if level == level_01:
+		# Win when a pikka (creatue2) has beenn caught with only 5 lasso throws
+		if lasso_casts < 6:
+			if len(captured_creatures) > 0:
+				captured_creatures = []
+				levels_complete["level1"] = 1
+				level_complete_settings["title"] = "Level 1 Complete"
+				level_complete_settings["blurb"] = "Well done for catching a PIKKA in under 5 loop throws!"
+				level_complete_settings["button1"] = ["NEXT LEVEL", level_2_scene, level_02]
+				level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_02]
+				end_level()
+		else:
+			# Fail, too many lasso attempts
+				captured_creatures = []
+				level_complete_settings["title"] = "Level 1 Failed"
+				level_complete_settings["blurb"] = "Oh no, you ran out of loops!"
+				level_complete_settings["button1"] = ["TRY AGAIN", level_1_scene, level_01]
+				level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_01]
+				end_level()
+	
+	# LEVEL 2 WIN STATE
+	if level == level_02:
+		# Captured the whole herd
+		if len(captured_creatures) == level_02["creature_01"]:
+			captured_creatures = []
+			levels_complete["level2"] = 1
+			level_complete_settings["title"] = "Level 2 Complete"
+			level_complete_settings["blurb"] = "Your herd of FLUMBERs is safe from the SPACE CRABS!"
+			level_complete_settings["button1"] = ["NEXT LEVEL", level_3_scene, level_03]
+			level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_03]
+			end_level()
+		# lassoed a crab, fail level
+		if current_captured:
+			if current_captured.creature_type == "creature_03":
+				captured_creatures = []
+				level_complete_settings["title"] = "Level 2 Failed"
+				level_complete_settings["blurb"] = "Oh no, you caught a SPACE CRAB and it bit through your loop!"
+				level_complete_settings["button1"] = ["TRY AGAIN", level_2_scene, level_02]
+				level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_02]
+				end_level()
+		
+	# LEVEL 3 WIN STATE
+	#if level == level_03:
+		# Ran out of time (check if collected them all or not)
 
-func end_level(success_or_fail):
-	if success_or_fail == "success":
-		print("success")
-		global.goto_scene("res://scenes/level_complete.tscn")
-	elif success_or_fail == "fail":
-		print("fail")
-		global.goto_scene("res://scenes/level_complete.tscn")
+
+func end_level():
+	global.goto_scene("res://scenes/level_complete.tscn")
+
+
+
+#func end_level(success_or_fail):
+#	if success_or_fail == "success":
+#		print("success")
+#		global.goto_scene("res://scenes/level_complete.tscn")
+#	elif success_or_fail == "fail":
+#		print("fail")
+#		global.goto_scene("res://scenes/level_complete.tscn")
 		
 
 func _ready():

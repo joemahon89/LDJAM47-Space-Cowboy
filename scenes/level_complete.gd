@@ -30,6 +30,10 @@ func _ready():
 func _on_button1_pressed():
 	# Set the level so that global knows what to load when main loads
 	global.level = global.level_complete_settings["button1"][2]
+	if global.level == global.level_03:
+		global.leveltimer = true
+	else:
+		global.leveltimer = false
 	global.goto_scene(button1_target)
 	
 func _on_button2_pressed():

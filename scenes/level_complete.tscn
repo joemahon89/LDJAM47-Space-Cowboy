@@ -72,6 +72,7 @@ custom_fonts/font = SubResource( 1 )
 text = "title"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="blurb" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_top = 119.0
@@ -83,6 +84,7 @@ custom_fonts/font = ExtResource( 6 )
 text = "blurb"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="button1" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_top = 161.0
@@ -96,10 +98,10 @@ custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.662745, 0.498039, 0.760784, 1 )
-custom_colors/font_color_pressed = Color( 0.662745, 0.498039, 0.760784, 1 )
+custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "button1"
 flat = true
 __meta__ = {
@@ -118,10 +120,10 @@ custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.662745, 0.498039, 0.760784, 1 )
-custom_colors/font_color_pressed = Color( 0.662745, 0.498039, 0.760784, 1 )
+custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 text = "button2"
 flat = true
 __meta__ = {
