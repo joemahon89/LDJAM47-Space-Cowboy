@@ -83,7 +83,7 @@ var creature_data = {
 func _ready():
 	# Set up creature based on sprite etc
 	var creature_png = creature_data[creature_type]["png"]
-	print(creature_png)
+	#print(creature_png)
 	#var creature_texture = preload("res://sprites/creature_01.png")
 	var creature_texture = load(creature_png)
 	sprite.set_texture(creature_texture)

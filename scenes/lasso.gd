@@ -66,11 +66,6 @@ func pre_reset_lasso():
 
 func reset_lasso():
 	set_mode(3)
-	#animation_easy.clear_caches()
-	#animation_easy.stop()
-	#print("PLAYING")
-	#print(animation_easy.is_playing())
-	#print("YAY OR NAY")
 	position = Vector2(320,330)
 	set_lasso_scale(Vector2(0.5, 0.5))
 	set_mode(0)
@@ -109,7 +104,7 @@ func _integrate_forces(state):
 			global.current_captured = null
 		input_allowed = false
 		
-		print(reset_pressed)
+		#print(reset_pressed)
 		animation_easy.seek(0.0,true)
 		animation_easy.stop(true)
 		
@@ -153,7 +148,7 @@ func grow_lasso(delta):
 
 
 func initial_impulse():
-	print("impulsing")
+	#print("impulsing")
 	# Old random impulse dir
 #	randomize()
 #	var angle_x = (randi() % (10 - 2) + 2)*0.1*-1
@@ -186,7 +181,7 @@ func _unhandled_input(event):
 			reset_pressed = true
 		else:
 			input_allowed = true
-			print("firing")
+			#print("firing")
 			global.lasso_casts += 1
 			global.level_win_state_check()
 			fire_lasso()

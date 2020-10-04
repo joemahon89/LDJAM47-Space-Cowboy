@@ -11,6 +11,8 @@
 size = 32
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxEmpty" id=2]
+
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
@@ -19,9 +21,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=7]
 size = 8
 font_data = ExtResource( 1 )
 
@@ -57,14 +57,14 @@ size_flags_stretch_ratio = 10.0
 
 [node name="Container_top" type="Container" parent="HBoxContainer/VBoxContainer"]
 margin_right = 293.0
-margin_bottom = 27.0
+margin_bottom = 29.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="title_label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 31.0
+margin_top = 33.0
 margin_right = 293.0
-margin_bottom = 85.0
+margin_bottom = 93.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -74,16 +74,16 @@ align = 1
 valign = 1
 
 [node name="button_tutorial" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 89.0
+margin_top = 97.0
 margin_right = 293.0
-margin_bottom = 116.0
+margin_bottom = 127.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
@@ -96,16 +96,16 @@ __meta__ = {
 }
 
 [node name="button_level_01" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 120.0
+margin_top = 131.0
 margin_right = 293.0
-margin_bottom = 147.0
+margin_bottom = 161.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
@@ -118,17 +118,17 @@ __meta__ = {
 }
 
 [node name="button_level_02" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 151.0
+margin_top = 165.0
 margin_right = 293.0
-margin_bottom = 178.0
+margin_bottom = 194.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
@@ -142,17 +142,17 @@ __meta__ = {
 }
 
 [node name="button_level_03" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 182.0
+margin_top = 198.0
 margin_right = 293.0
-margin_bottom = 209.0
+margin_bottom = 228.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
@@ -166,17 +166,17 @@ __meta__ = {
 }
 
 [node name="button_level_04" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 213.0
+margin_top = 232.0
 margin_right = 293.0
-margin_bottom = 240.0
+margin_bottom = 262.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
@@ -190,17 +190,18 @@ __meta__ = {
 }
 
 [node name="button_level_05" type="Button" parent="HBoxContainer/VBoxContainer"]
+visible = false
 margin_top = 244.0
 margin_right = 293.0
 margin_bottom = 271.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
@@ -214,13 +215,13 @@ __meta__ = {
 }
 
 [node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 275.0
+margin_top = 266.0
 margin_right = 293.0
-margin_bottom = 329.0
+margin_bottom = 326.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
 text = "Use ARROW KEYS and SPACE to select an option.
 
@@ -230,7 +231,7 @@ valign = 1
 autowrap = true
 
 [node name="Container_bottom" type="Container" parent="HBoxContainer/VBoxContainer"]
-margin_top = 333.0
+margin_top = 330.0
 margin_right = 293.0
 margin_bottom = 360.0
 size_flags_horizontal = 3

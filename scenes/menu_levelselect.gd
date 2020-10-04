@@ -16,7 +16,7 @@ func _ready():
 	button_level_02 = get_node("HBoxContainer/VBoxContainer/button_level_02")
 	button_level_03 = get_node("HBoxContainer/VBoxContainer/button_level_03")
 	button_level_04 = get_node("HBoxContainer/VBoxContainer/button_level_04")
-	button_level_05 = get_node("HBoxContainer/VBoxContainer/button_level_05")
+	#button_level_05 = get_node("HBoxContainer/VBoxContainer/button_level_05")
 	
 
 		
@@ -25,7 +25,7 @@ func _ready():
 		
 	#if global.levels_complete["level1"]
 	
-	var debug = true
+	var debug = false
 		
 	if debug == true:
 		button_level_02.focus_mode = FOCUS_ALL
@@ -34,8 +34,8 @@ func _ready():
 		button_level_03.disabled = false
 		button_level_04.focus_mode = FOCUS_ALL
 		button_level_04.disabled = false
-		button_level_05.focus_mode = FOCUS_ALL
-		button_level_05.disabled = false
+		#button_level_05.focus_mode = FOCUS_ALL
+		#button_level_05.disabled = false
 		
 		
 	# Set 'completed' to buttons if the levels have been completed
@@ -55,10 +55,10 @@ func _ready():
 		button_level_04.disabled = false
 	if global.levels_complete["level4"] == 1:
 		button_level_04.text = "Level 4" + " - COMPLETED!"
-		button_level_05.focus_mode = FOCUS_ALL
-		button_level_05.disabled = false
-	if global.levels_complete["level5"] == 1:
-		button_level_05.text = "Level 5" + " - COMPLETED!"
+	#	button_level_05.focus_mode = FOCUS_ALL
+	#	button_level_05.disabled = false
+	#if global.levels_complete["level5"] == 1:
+	#	button_level_05.text = "Level 5" + " - COMPLETED!"
 		
 	# Set button focuses
 	if global.level == global.tutorial:
@@ -71,10 +71,10 @@ func _ready():
 		button_level_03.grab_focus()
 	elif global.level == global.level_04:
 		button_level_04.grab_focus()
-	elif global.level == global.level_05:
-		button_level_05.grab_focus()
-	else:
-		button_tutorial.grab_focus()
+	#elif global.level == global.level_05:
+	#	button_level_05.grab_focus()
+	#else:
+	#	button_tutorial.grab_focus()
 		
 	
 	
@@ -85,8 +85,8 @@ func _ready():
 		button_level_03.disabled = false
 		button_level_04.focus_mode = FOCUS_ALL
 		button_level_04.disabled = false
-		button_level_05.focus_mode = FOCUS_ALL
-		button_level_05.disabled = false
+		#button_level_05.focus_mode = FOCUS_ALL
+		#button_level_05.disabled = false
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -131,8 +131,8 @@ func _on_button_level_04_pressed():
 	global.goto_scene(global.level_4_scene)
 
 
-func _on_button_level_05_pressed():
-	AudioStreamManager.play("res://sounds/menu_select.wav")
-	global.level = global.level_05
-	global.leveltimer = false
-	global.goto_scene(global.level_5_scene)
+#func _on_button_level_05_pressed():
+#	AudioStreamManager.play("res://sounds/menu_select.wav")
+#	global.level = global.level_05
+#	global.leveltimer = false
+#	global.goto_scene(global.level_5_scene)
