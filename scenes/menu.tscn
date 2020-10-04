@@ -49,14 +49,14 @@ size_flags_stretch_ratio = 10.0
 
 [node name="Container_top" type="Container" parent="HBoxContainer/VBoxContainer"]
 margin_right = 296.0
-margin_bottom = 28.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="title_label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 32.0
+margin_top = 29.0
 margin_right = 296.0
-margin_bottom = 88.0
+margin_bottom = 81.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -66,9 +66,9 @@ align = 1
 valign = 1
 
 [node name="blurb_label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 92.0
+margin_top = 85.0
 margin_right = 296.0
-margin_bottom = 148.0
+margin_bottom = 137.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -79,26 +79,28 @@ align = 1
 valign = 1
 
 [node name="blurb_label2" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 152.0
+margin_top = 141.0
 margin_right = 296.0
-margin_bottom = 208.0
+margin_bottom = 193.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 custom_fonts/font = SubResource( 2 )
-text = "* Use SPACE to throw your SUPER-LOOP
+text = "
+* Use SPACE to cast your SUPER-LOOP
 
 * Use WASD or ARROW KEYS to guide 
 your SUPER-LOOP onto a creature"
 valign = 1
+autowrap = true
 
 [node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 212.0
+margin_top = 197.0
 margin_right = 296.0
-margin_bottom = 268.0
+margin_bottom = 274.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 3.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
 text = "Press SPACE to start"
@@ -106,18 +108,19 @@ align = 1
 valign = 1
 
 [node name="blurb_label4" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 272.0
+margin_top = 278.0
 margin_right = 296.0
-margin_bottom = 328.0
+margin_bottom = 330.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 custom_fonts/font = SubResource( 2 )
-text = "* A game made for LDJAM74 by a4x8e6 *"
+text = "
+* A game made for LDJAM74 by a4x8e6 *"
 valign = 1
 
 [node name="Container_bottom" type="Container" parent="HBoxContainer/VBoxContainer"]
-margin_top = 332.0
+margin_top = 334.0
 margin_right = 296.0
 margin_bottom = 360.0
 size_flags_horizontal = 3

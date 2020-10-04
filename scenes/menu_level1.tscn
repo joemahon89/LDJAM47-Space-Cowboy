@@ -67,7 +67,7 @@ size_flags_stretch_ratio = 3.0
 custom_fonts/font = ExtResource( 1 )
 text = "A bit trickier this time!
 
-Catch a PIKKA with only 5 throws of your loop!
+Catch 2 PIKKA with only 5 throws of your loop!
 
 "
 align = 1

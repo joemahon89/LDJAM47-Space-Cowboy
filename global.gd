@@ -41,6 +41,7 @@ var level_2_scene = "res://scenes/menu_level2.tscn"
 var level_3_scene = "res://scenes/menu_level3.tscn"
 var level_4_scene = "res://scenes/menu_level4.tscn"
 var level_5_scene = "res://scenes/menu_level5.tscn"
+var creature_handbook_scene = "res://scenes/creature_handbook.tscn"
 
 
 var total_cash = 0
@@ -94,7 +95,7 @@ func level_win_state_check():
 	if level == level_01:
 		# Win when a pikka (creatue2) has beenn caught with only 5 lasso throws
 		if lasso_casts < 6:
-			if len(captured_creatures) > 0:
+			if len(captured_creatures) >= 2:
 				captured_creatures = []
 				AudioStreamManager.play("res://sounds/level_success.wav")
 				levels_complete["level1"] = 1
@@ -167,9 +168,10 @@ func level_win_state_check():
 				AudioStreamManager.play("res://sounds/level_success.wav")
 				captured_creatures = []
 				levels_complete["level4"] = 1
-				level_complete_settings["title"] = "Level 4 Complete"
-				level_complete_settings["blurb"] = "Well done, you managed not to get snipped too much!"
-				level_complete_settings["button1"] = ["NEXT LEVEL", level_5_scene, level_05]
+				level_complete_settings["title"] = "Game Complete!"
+				level_complete_settings["blurb"] = "Congratulations! You have completed the game! Thank you for playing :)"
+				#level_complete_settings["button1"] = ["NEXT LEVEL", level_5_scene, level_05]
+				level_complete_settings["button1"].set_visible(false)
 				level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_05]
 				end_level()
 		elif level_4_fail == true:

@@ -139,7 +139,8 @@ func _on_button_level_04_pressed():
 
 
 func _on_creature_handbook_pressed():
-	pass # Replace with function body.
+	AudioStreamManager.play("res://sounds/menu_select.wav")
+	global.goto_scene(global.creature_handbook_scene)
 	
 	
 	

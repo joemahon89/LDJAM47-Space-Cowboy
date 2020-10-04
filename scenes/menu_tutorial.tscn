@@ -41,14 +41,14 @@ size_flags_stretch_ratio = 10.0
 
 [node name="Container_top" type="Container" parent="HBoxContainer/VBoxContainer"]
 margin_right = 293.0
-margin_bottom = 38.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="title_label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 42.0
+margin_top = 29.0
 margin_right = 293.0
-margin_bottom = 118.0
+margin_bottom = 80.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -58,9 +58,9 @@ align = 1
 valign = 1
 
 [node name="blurb_label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 122.0
+margin_top = 84.0
 margin_right = 293.0
-margin_bottom = 237.0
+margin_bottom = 276.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
@@ -69,15 +69,21 @@ text = "Lets start with some slow moving animals.
 
 Catch a single FLUMBER
 
+
+
+
+
+
+Remember, cast your SUPER-LOOP with SPACE. If you don't like where it's going, you can cancel it at any time by pressing SPACE again!
 "
 align = 1
 valign = 1
 autowrap = true
 
 [node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 241.0
+margin_top = 280.0
 margin_right = 293.0
-margin_bottom = 317.0
+margin_bottom = 330.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -90,7 +96,7 @@ align = 1
 valign = 1
 
 [node name="Container_bottom" type="Container" parent="HBoxContainer/VBoxContainer"]
-margin_top = 321.0
+margin_top = 334.0
 margin_right = 293.0
 margin_bottom = 360.0
 size_flags_horizontal = 3
@@ -104,5 +110,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="sprite_bottom_right" type="Sprite" parent="."]
-position = Vector2( 180, 225 )
+position = Vector2( 180, 177 )
 texture = ExtResource( 4 )
