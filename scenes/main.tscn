@@ -1,14 +1,244 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/lasso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/main.gd" type="Script" id=2]
 [ext_resource path="res://scenes/creature_01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://sprites/conveyor/conveyor_4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/conveyor/conveyor_1.png" type="Texture" id=6]
+[ext_resource path="res://sprites/conveyor/conveyor_2.png" type="Texture" id=7]
+[ext_resource path="res://sprites/conveyor/conveyor_3.png" type="Texture" id=8]
+[ext_resource path="res://sprites/conveyor/conveyor_0.png" type="Texture" id=9]
+[ext_resource path="res://sprites/target.png" type="Texture" id=10]
+[ext_resource path="res://sprites/astronaut.png" type="Texture" id=11]
+[ext_resource path="res://font/PressStart2P.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://sprites/pipe.png" type="Texture" id=13]
+[ext_resource path="res://font/basic_text.tres" type="DynamicFont" id=14]
+[ext_resource path="res://sprites/fence.png" type="Texture" id=15]
+[ext_resource path="res://sprites/fence_l.png" type="Texture" id=16]
+[ext_resource path="res://sprites/fence_r2.png" type="Texture" id=17]
+[ext_resource path="res://sprites/fence_r.png" type="Texture" id=18]
+[ext_resource path="res://sprites/fence_l2.png" type="Texture" id=19]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 12 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="lasso" parent="." instance=ExtResource( 1 )]
-position = Vector2( 168, 159 )
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 360.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="creature" parent="." instance=ExtResource( 3 )]
+[node name="label_01" type="Label" parent="Container"]
+visible = false
+margin_right = 360.0
+margin_bottom = 14.0
+text = "test"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_02" type="Label" parent="Container"]
+visible = false
+margin_right = 360.0
+margin_bottom = 14.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_03" type="Label" parent="Container"]
+visible = false
+margin_right = 360.0
+margin_bottom = 14.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_04" type="Label" parent="Container"]
+visible = false
+margin_right = 360.0
+margin_bottom = 14.0
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="wall_tl" type="Sprite" parent="walls"]
+position = Vector2( 32, 7.62542 )
+texture = ExtResource( 16 )
+
+[node name="wall02" type="Sprite" parent="walls"]
+position = Vector2( 96, 8 )
+texture = ExtResource( 15 )
+
+[node name="wall03" type="Sprite" parent="walls"]
+position = Vector2( 160, 8 )
+texture = ExtResource( 15 )
+
+[node name="wall04" type="Sprite" parent="walls"]
+position = Vector2( 224, 8 )
+texture = ExtResource( 15 )
+
+[node name="wall05" type="Sprite" parent="walls"]
+position = Vector2( 288, 8 )
+texture = ExtResource( 15 )
+
+[node name="wall_tr" type="Sprite" parent="walls"]
+position = Vector2( 328, 8 )
+texture = ExtResource( 18 )
+
+[node name="wall_l_01" type="Sprite" parent="walls"]
+position = Vector2( 32, 71 )
+texture = ExtResource( 19 )
+
+[node name="wall_l_02" type="Sprite" parent="walls"]
+position = Vector2( 32, 135 )
+texture = ExtResource( 19 )
+
+[node name="wall_l_03" type="Sprite" parent="walls"]
+position = Vector2( 32, 199 )
+texture = ExtResource( 19 )
+
+[node name="wall_l_04" type="Sprite" parent="walls"]
+position = Vector2( 32, 263 )
+texture = ExtResource( 19 )
+
+[node name="wall_r_01" type="Sprite" parent="walls"]
+position = Vector2( 328, 72 )
+texture = ExtResource( 17 )
+
+[node name="wall_r_02" type="Sprite" parent="walls"]
+position = Vector2( 328, 136 )
+texture = ExtResource( 17 )
+
+[node name="wall_r_03" type="Sprite" parent="walls"]
+position = Vector2( 328, 200 )
+texture = ExtResource( 17 )
+
+[node name="wall_r_04" type="Sprite" parent="walls"]
+position = Vector2( 328, 264 )
+texture = ExtResource( 17 )
+
+[node name="wall_r_05" type="Sprite" parent="walls"]
+position = Vector2( 328, 328 )
+texture = ExtResource( 17 )
+
+[node name="target" type="Sprite" parent="."]
+position = Vector2( 192, 256 )
+texture = ExtResource( 10 )
+
+[node name="conveyor_sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 184, 296 )
+frames = SubResource( 1 )
+frame = 4
+playing = true
+
+[node name="ground_details" type="YSort" parent="."]
+position = Vector2( 1, 0 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="creature" parent="YSort" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 104, 88 )
+
+[node name="lasso" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 320, 330 )
+
+[node name="lasso_anchor_point" type="Sprite" parent="."]
+visible = false
+position = Vector2( 288, 312 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 4 )
+
+[node name="pipe" type="Sprite" parent="."]
+position = Vector2( 60, 296 )
+texture = ExtResource( 13 )
+
+[node name="astronaut" type="Sprite" parent="."]
+position = Vector2( 264, 290 )
+texture = ExtResource( 11 )
+
+[node name="creature_move_point_01" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 249 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="creature_move_point_02" type="Sprite" parent="."]
+visible = false
+position = Vector2( 184, 296 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="creature_move_point_03" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 296 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="lasso_rope" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 3.0
+default_color = Color( 0.705882, 0.482353, 0.811765, 1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 336, 224 )
+
+[node name="score_header" type="Label" parent="."]
+visible = false
+margin_left = 32.0
+margin_top = 272.0
+margin_right = 73.0
+margin_bottom = 286.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score_counter" type="Label" parent="."]
+visible = false
+margin_left = 32.0
+margin_top = 296.0
+margin_right = 112.0
+margin_bottom = 312.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+text = "00000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time_counter" type="Label" parent="."]
+margin_left = 91.0
+margin_top = 12.0
+margin_right = 256.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 14 )
+text = "TIME REMAINING:"
+__meta__ = {
+"_edit_use_anchors_": false
+}

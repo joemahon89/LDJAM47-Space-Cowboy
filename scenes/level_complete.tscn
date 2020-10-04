@@ -1,0 +1,169 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://font/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://font/3Dventure.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/level_complete.gd" type="Script" id=3]
+[ext_resource path="res://sprites/creature_01.png" type="Texture" id=4]
+[ext_resource path="res://sprites/creature_02.png" type="Texture" id=5]
+[ext_resource path="res://font/basic_text.tres" type="DynamicFont" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+size = 8
+font_data = ExtResource( 1 )
+
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container_l" type="Container" parent="HBoxContainer"]
+margin_right = 29.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 33.0
+margin_right = 326.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Container_top" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_right = 293.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="title_label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 41.0
+margin_right = 293.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = SubResource( 1 )
+text = "title"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="blurb" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 119.0
+margin_right = 293.0
+margin_bottom = 157.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 6 )
+text = "blurb"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="button1" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 161.0
+margin_right = 293.0
+margin_bottom = 198.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "button1"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button2" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 202.0
+margin_right = 293.0
+margin_bottom = 239.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.411765, 0.309804, 0.470588, 1 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "button2"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blurb_label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 243.0
+margin_right = 293.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.662745, 0.498039, 0.760784, 1 )
+text = "Use ARROW KEYS and SPACE to select an option."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Container_bottom" type="Container" parent="HBoxContainer/VBoxContainer"]
+margin_top = 322.0
+margin_right = 293.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Container_r" type="Container" parent="HBoxContainer"]
+margin_left = 330.0
+margin_right = 360.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="sprite_bottom_right" type="Sprite" parent="."]
+position = Vector2( 321, 321 )
+texture = ExtResource( 4 )
+
+[node name="sprite_bottom_left" type="Sprite" parent="."]
+position = Vector2( 41, 321 )
+texture = ExtResource( 5 )
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/button1" to="." method="_on_button1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/button2" to="." method="_on_button2_pressed"]
