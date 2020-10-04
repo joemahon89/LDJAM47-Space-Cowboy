@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lasso_grab.wav-ff8610212c971e0a7e9eaaf5a1f52ebc.sample"
+
+[deps]
+
+source_file="res://sounds/lasso_grab.wav"
+dest_files=[ "res://.import/lasso_grab.wav-ff8610212c971e0a7e9eaaf5a1f52ebc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

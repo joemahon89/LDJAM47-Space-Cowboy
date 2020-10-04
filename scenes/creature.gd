@@ -161,6 +161,7 @@ func _process(delta):
 				velocity = move_and_slide(velocity)
 			if neck_pos.distance_to(cmp01.position) <= 20:
 				velocity = move_and_slide(Vector2(0,0))
+				AudioStreamManager.play("res://sounds/deposit_at_target.wav")
 				captured = false
 				conveyoring = true
 				target = cmp01.position
@@ -204,6 +205,7 @@ func _process(delta):
 		if target == cmp03.position:
 			if neck_pos.distance_to(cmp03.position) < 10:
 				global.captured_creatures.append(creature_type)
+				AudioStreamManager.play("res://sounds/tunnel_received.wav")
 				global.add_points(creature_data[creature_type]["capture_points"])
 				
 				#lasso_node
@@ -216,12 +218,11 @@ func _process(delta):
 
 
 func _on_Area2D_area_entered(area):
-	print("blah")
 	# for grogsnipper freeing eeach other
 	if creature_type == "creature_05":
-		print("blah2")
+
 		if captured ==  true:
-			print("blah3")
+			AudioStreamManager.play("res://sounds/cut_lasso.wav")
 			move_before_capture()
 			lasso_collider.reset_pressed = true
 	

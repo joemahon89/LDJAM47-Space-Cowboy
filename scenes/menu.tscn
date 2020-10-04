@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://font/3Dventure.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://font/PressStart2P.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://sprites/creature_01.png" type="Texture" id=3]
 [ext_resource path="res://sprites/creature_02.png" type="Texture" id=4]
 [ext_resource path="res://scenes/menu.gd" type="Script" id=5]
+[ext_resource path="res://sprites/creature_04.png" type="Texture" id=6]
+[ext_resource path="res://sprites/creature_03.png" type="Texture" id=7]
+[ext_resource path="res://sprites/creature_05.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -130,6 +133,18 @@ size_flags_vertical = 3
 [node name="sprite_bottom_right" type="Sprite" parent="."]
 position = Vector2( 300, 236 )
 texture = ExtResource( 3 )
+
+[node name="sprite_bottom_right2" type="Sprite" parent="."]
+position = Vector2( 236, 268 )
+texture = ExtResource( 7 )
+
+[node name="sprite_bottom_right3" type="Sprite" parent="."]
+position = Vector2( 176, 266 )
+texture = ExtResource( 6 )
+
+[node name="sprite_bottom_right4" type="Sprite" parent="."]
+position = Vector2( 111, 269 )
+texture = ExtResource( 8 )
 
 [node name="sprite_bottom_left" type="Sprite" parent="."]
 position = Vector2( 65, 244 )

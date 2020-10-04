@@ -15,10 +15,11 @@ func _ready():
 func _unhandled_input(event):
 	print("test")
 	if event.is_action_pressed("ui_cancel"):
+		AudioStreamManager.play("res://sounds/menu_back.wav")
 		global.goto_scene("res://scenes/menu_levelselect.tscn")
 		
 	if event.is_action_pressed("ui_accept"):
-		print("loading main")
+		AudioStreamManager.play("res://sounds/menu_select.wav")
 		global.goto_scene("res://scenes/main.tscn")
 
 

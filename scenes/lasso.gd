@@ -193,6 +193,8 @@ func _unhandled_input(event):
 			
 
 func fire_lasso():
+	
+	AudioStreamManager.play("res://sounds/rope.wav")
 	animation_easy.play("lasso_scale_anim")
 	initial_impulse()
 
@@ -283,6 +285,7 @@ func _on_Area2D_area_exited(area):
 func check_if_creature_caught():
 	if len(inside_lasso) > 0:
 		creature_captured(true, inside_lasso[0])
+		
 	else:
 		creature_captured(false, null)
 
@@ -297,6 +300,7 @@ func creature_captured(captured, creature):
 		creature_node.get_node("particles_captured").emitting = true
 		creature_node.move_after_capture()
 		global.level_win_state_check()
+		AudioStreamManager.play("res://sounds/lasso_grab.wav")
 		#global.current_captured = creature_node
 		#reset_pressed = true
 	else:

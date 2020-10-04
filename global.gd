@@ -78,6 +78,7 @@ func level_win_state_check():
 	if level == tutorial:
 		# win when a single cow has been caught
 		if len(captured_creatures) > 0:
+			AudioStreamManager.play("res://sounds/level_success.wav")
 			captured_creatures = []
 			levels_complete["tutorial"] = 1
 			level_complete_settings["title"] = "Tutorial Complete"
@@ -95,6 +96,7 @@ func level_win_state_check():
 		if lasso_casts < 6:
 			if len(captured_creatures) > 0:
 				captured_creatures = []
+				AudioStreamManager.play("res://sounds/level_success.wav")
 				levels_complete["level1"] = 1
 				level_complete_settings["title"] = "Level 1 Complete"
 				level_complete_settings["blurb"] = "Well done for catching a PIKKA in under 5 loop throws!"
@@ -103,17 +105,19 @@ func level_win_state_check():
 				end_level()
 		else:
 			# Fail, too many lasso attempts
-				captured_creatures = []
-				level_complete_settings["title"] = "Level 1 Failed"
-				level_complete_settings["blurb"] = "Oh no, you ran out of loops!"
-				level_complete_settings["button1"] = ["TRY AGAIN", level_1_scene, level_01]
-				level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_01]
-				end_level()
+			AudioStreamManager.play("res://sounds/level_fail.wav")
+			captured_creatures = []
+			level_complete_settings["title"] = "Level 1 Failed"
+			level_complete_settings["blurb"] = "Oh no, you ran out of loops!"
+			level_complete_settings["button1"] = ["TRY AGAIN", level_1_scene, level_01]
+			level_complete_settings["button2"] = ["QUIT TO MENU", "res://scenes/menu_levelselect.tscn", level_01]
+			end_level()
 	
 	# LEVEL 2 WIN STATE
 	if level == level_02:
 		# Captured the whole herd
 		if len(captured_creatures) == level_02["creature_01"]:
+			AudioStreamManager.play("res://sounds/level_success.wav")
 			captured_creatures = []
 			levels_complete["level2"] = 1
 			level_complete_settings["title"] = "Level 2 Complete"
@@ -123,6 +127,7 @@ func level_win_state_check():
 			end_level()
 		# lassoed a crab, fail level
 		if current_captured:
+			AudioStreamManager.play("res://sounds/level_fail.wav")
 			if current_captured.creature_type == "creature_03":
 				captured_creatures = []
 				level_complete_settings["title"] = "Level 2 Failed"
@@ -136,6 +141,7 @@ func level_win_state_check():
 		if level_3_fail == false:
 			# Captured within time limit
 			if len(captured_creatures) == level_03["creature_04"]:
+				AudioStreamManager.play("res://sounds/level_success.wav")
 				captured_creatures = []
 				levels_complete["level3"] = 1
 				level_complete_settings["title"] = "Level 3 Complete"
@@ -145,6 +151,7 @@ func level_win_state_check():
 				end_level()
 		elif level_3_fail == true:
 			# ran out of time
+			AudioStreamManager.play("res://sounds/level_fail.wav")
 			captured_creatures = []
 			level_complete_settings["title"] = "Level 3 Failed"
 			level_complete_settings["blurb"] = "Oh no, you didn't get them all inside in time!"
@@ -157,6 +164,7 @@ func level_win_state_check():
 		if level_4_fail == false:
 			# Captured within time limit
 			if len(captured_creatures) >= 5:
+				AudioStreamManager.play("res://sounds/level_success.wav")
 				captured_creatures = []
 				levels_complete["level4"] = 1
 				level_complete_settings["title"] = "Level 4 Complete"
@@ -166,6 +174,7 @@ func level_win_state_check():
 				end_level()
 		elif level_4_fail == true:
 			# ran out of time
+			AudioStreamManager.play("res://sounds/level_fail.wav")
 			captured_creatures = []
 			level_complete_settings["title"] = "Level 4 Failed"
 			level_complete_settings["blurb"] = "Looks like those GROGSNIPPERS were too much to handle!"
@@ -189,10 +198,20 @@ func end_level():
 #		global.goto_scene("res://scenes/level_complete.tscn")
 		
 
+
+var rope_sound = "res://sounds/rope.wav"
+var stream
+var music_player
+
 func _ready():
 	OS.window_size = Vector2(720,720)
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)
+
+
+
+
+
 
 func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
@@ -212,5 +231,8 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+
+
+
 
 

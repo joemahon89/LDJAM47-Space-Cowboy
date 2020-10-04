@@ -40,8 +40,10 @@ func _on_button1_pressed():
 		global.leveltimer_amount = 30
 	else:
 		global.leveltimer = false
+	AudioStreamManager.play("res://sounds/menu_select.wav")
 	global.goto_scene(button1_target)
 	
 func _on_button2_pressed():
 	global.level = global.level_complete_settings["button2"][2]
+	AudioStreamManager.play("res://sounds/menu_back.wav")
 	global.goto_scene(button2_target)

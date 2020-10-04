@@ -90,28 +90,33 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
+		AudioStreamManager.play("res://sounds/menu_back.wav")
 		global.goto_scene("res://scenes/menu.tscn")
 
 
 func _on_button_tutorial_pressed():
+	AudioStreamManager.play("res://sounds/menu_select.wav")
 	global.level = global.tutorial
 	global.leveltimer = false
 	global.goto_scene(global.tutorial_scene)
 
 
 func _on_button_level_01_pressed():
+	AudioStreamManager.play("res://sounds/menu_select.wav")
 	global.level = global.level_01
 	global.leveltimer = false
 	global.goto_scene(global.level_1_scene)
 
 
 func _on_button_level_02_pressed():
+	AudioStreamManager.play("res://sounds/menu_select.wav")
 	global.level = global.level_02
 	global.leveltimer = false
 	global.goto_scene(global.level_2_scene)
 
 
 func _on_button_level_03_pressed():
+	AudioStreamManager.play("res://sounds/menu_select.wav")
 	global.level = global.level_03
 	global.leveltimer = true
 	global.leveltimer_amount = 20
@@ -119,6 +124,7 @@ func _on_button_level_03_pressed():
 
 
 func _on_button_level_04_pressed():
+	AudioStreamManager.play("res://sounds/menu_select.wav")
 	global.level = global.level_04
 	global.leveltimer = true
 	global.leveltimer_amount = 30
@@ -126,6 +132,7 @@ func _on_button_level_04_pressed():
 
 
 func _on_button_level_05_pressed():
+	AudioStreamManager.play("res://sounds/menu_select.wav")
 	global.level = global.level_05
 	global.leveltimer = false
 	global.goto_scene(global.level_5_scene)
